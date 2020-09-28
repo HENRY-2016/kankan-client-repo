@@ -1,0 +1,1034 @@
+
+/* .main_body { background-color: #f1f1f1 #660033} #f0e1d8; */
+/*  	#808080 */
+/* .main_body { background-color:#ADD8E6 } */
+/* .main_body { background-color:#E6E6FA } */
+.main_body { background-color:#808080}
+
+
+
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++++++++++++
+                                               +                                 +
+                                               +   INDEX PAGE....  +
+                                               +                                 + 
+                                               +++++++++++++++++++++++++++++++++++
+                                            */
+
+
+
+.products-iframe
+{
+    width:100%;
+    height: 100%;
+    margin-top: -2px;
+    align-content: center;
+}
+.Offline-Label
+{
+    font-size: 25px;
+    font-family:Times New Roman Times, serif;
+    color:red;
+    font-weight: bold;
+    font-style: italic;
+    background-color: white;
+    border-bottom: 2px solid blue
+}
+.img-log-icone
+{
+    border-radius: 40%;
+}
+.products-log-incone
+{
+    border-radius: 40%;
+}
+.js_table_headers
+{
+    background-color:#4CAF50;
+}
+
+.js_table_row
+{
+    background-color:#2196F3;
+    /* color: white; */
+    border-bottom:1px solid #ddd;
+    font-size: 18px;
+    font-weight:bold;
+    color:#E6E6FA;
+    font-family:Times New Roman Times, serif;
+
+}
+.js_table_row:hover
+{
+    background-color: black;
+    cursor: pointer;
+}
+
+.user-scrolling-table
+{
+    display:block;
+    overflow: auto;
+    height: 350px;
+    width: 95%;
+}
+
+
+.show-btn
+{
+    
+    width: 50%;
+    background-color: blue;
+    height:35px;
+    border-radius:50px;
+}
+
+.close-btn
+{
+    
+    width: 30%;
+    height:35px;
+    background-color: red;
+    border-radius:50px;
+}
+
+
+
+.menu_btns
+{
+    background-color:#708090;
+    border:none;
+    color:white;
+    font-weight: bold;
+    width:95%;
+    height:50px;
+    border-radius:18px;
+}
+.comment-order-gui
+{
+    background-color:#708090;
+    border:none;
+    color:white;
+    font-weight: bold;
+    width:25%;
+    height:40px;
+    border-radius:18px;
+}
+.admin-btn
+{
+    background-color:black;
+    color: white;
+    font-weight: bold;
+    border:none;
+    width:95%;
+    height:40px;
+    border-radius:18px;
+}
+.shop-btn
+{
+    background-color:blue;
+    color: white;
+    font-weight: bold;
+    border:none;
+    width:50%;
+    height:40px;
+    border-radius:18px;
+}
+
+
+.grand-child-btn
+{
+    background-color:green;
+    color: white;
+    font-weight: bold;
+    border:none;
+    width:50%;
+    height:40px;
+    border-radius:18px;
+}
+.submit-btn
+{
+    background-color:blue;
+    border:none;
+    width:40%;
+    height:40px;
+    border-radius:18px;
+    color: white;
+
+}
+
+.jslabel
+{
+    display: block;
+    color: blue;
+}
+.jslabel:hover {background-color: black;}
+
+/* ============================= INTRESETS PAGE ================ */
+/* 
+.interest-description-btns
+    {
+        background-color:#708090;
+        cursor: pointer;
+        padding: 8px 8px 8px 8px;
+        width: 100%;
+        border-color: #708090;
+        border-style: solid;
+        text-align: left;
+        font-size: 18px;
+        font-family:Times New Roman Times, serif;
+        color:white;
+        font-family:Times New Roman Times, serif;
+        transition: 0.4s;
+
+    }
+.interest-description-btns.active {background-color: #1E90FF; }
+
+.interest-description-btns:hover {background-color:  	#B0C4DE;}
+
+.interest-description-btns:after
+{
+    content: '\002B'; 
+    color: white;
+    font-weight: bolder;
+    float: right;
+    margin-left: 5px;
+}
+.interest-description-btns.active:after {content: "\2212"; }
+
+.description-contents
+    {
+        padding: 0 18px;
+        width:95%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+     */
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++ ++
+                                               +                          +
+                                               +   ON ORDER APGE          +
+                                               +                          +
+                                               ++++++++++++++++++++++++++++
+                                               */
+
+
+/* Include the padding and border in an element's total width and height */
+*{box-sizing: border-box;}
+
+/* Remove margins and padding from the list */
+ul 
+{
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the list items */
+ul li 
+{
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {background: #f9f9f9;}
+
+/* Darker background-color on hover */
+ul li:hover {background: #ddd;}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+/* Style the close button */
+.close-x {
+    position: absolute;
+    background-color: #f44336;
+    color: white;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+}
+
+.close-x:hover {
+    background-color: red;
+    color: white;
+}
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}
+/* Style the header */
+.header-order-modal 
+{
+    /* background-color: #f44336; */
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+}
+  /* Clear floats after the header */
+.header-order-modal:after 
+{
+    content: "";
+    display: table;
+    clear: both;
+}
+.list-class
+{
+    color: blue;
+    /* float: left; */
+}
+.add-btn-order-modal
+{
+    padding: 10px;
+    width: 200px;
+    background: #d9d9d9;
+    /* color: #555; */
+    color: black;
+    /* height: 37px; */
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++ ++
+                                               +                          +
+                                               +   NAVIGETION            +
+                                               +                          +
+                                               ++++++++++++++++++++++++++++
+                                               */
+
+.LogIconImg
+{
+    margin-top: 10px;
+    width: 70px;
+
+}
+.fontstyles
+{
+    font-size: 20px;
+    font-family:Times New Roman Times, serif;
+    /* font-weight:bold; */
+}
+.close-navi-span
+{
+    background-color: red;
+    border-radius: 60px;
+    color:#00008B;
+}
+.our-label-menu
+{
+    color:blue;
+    text-decoration:none;
+    transition:0.3s;
+    display:block;
+    padding:10px 10px;
+    background-color: wheat;
+    border-radius: 10px;
+}
+.make-order-label
+{
+    color:blue;
+    text-decoration:none;
+    transition:0.3s;
+    display:block;
+    text-align: center;
+    padding:10px 10px;
+    background-color: yellowgreen;
+    border-radius: 10px;
+}
+
+.Name-log-icone
+{
+    width: 50%;
+    margin-left: 20%;
+}
+.HomeIcon
+{
+    font-size:36px;
+    color:white;
+    font-weight:bold;
+}
+.header
+{
+    position: fixed;
+    height: 100%;
+    width: 0;
+    padding-top: 60px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    /*SLIDER*/
+    /* background-color: #993333;  */
+}
+
+.header a
+{
+    color:blue;
+    text-decoration:none;
+    transition:0.3s;
+    display:block;
+    padding:5px 5px;
+    font-size: 20px;
+    font-family:Times New Roman Times, serif;
+}
+
+a:hover{background-color:#E6E6FA;}
+
+.header .closebtn
+{
+
+    position:absolute;
+    right: 2px;
+    margin-left:50px;
+    top:0;
+    font-size:30px;
+
+}
+#navigetion-links-div
+{
+    text-align: center;
+}
+
+#NaviDivHeader
+    {
+        /* background-color:#CD853F; ------#8B4513 */
+        background-color: #A9A9A9;
+        /* #CD853F;  */
+        height:80px;
+    }
+#NaviDivFooter
+{
+    background-color:#A9A9A9;
+    height:50px;
+}
+.our-products-label
+{
+    color:black;
+    text-align: center;
+    padding:5px 5px;
+    font-size: 20px;
+    font-family:Times New Roman Times, serif;
+}
+
+.kone-menu-label
+{
+    font-size:50px;
+    margin-top: -100px;
+    cursor:pointer;
+    /* color:#00008B; */
+    color: white;
+}
+.kone-label
+{
+    font-size: 20px;
+    color:white;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: -300px;
+    margin-left: 20px;
+    font-family:Times New Roman Times, serif;
+}
+
+
+.Drop-Down-Content
+{
+    display: none;
+    position: relative;
+    /* background-color: #ddd; */
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.drop-down-content-label 
+{
+    color: blue;
+    font-size: 18px;
+    padding: 5px 5px;
+    cursor: pointer;
+    display: block;
+}
+
+.content-sub-title-labels
+{
+    color:green;
+    /* background-color: #00008B; */
+    font-size: 20px;
+    /* width: 100%; */
+    padding: 5px 5px;
+}
+
+
+
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++++++++++++
+                                               +                                 +
+                                               +   Global classes (every page)   +
+                                               +                                 + 
+                                               +++++++++++++++++++++++++++++++++++
+                                            */
+
+
+.loader {
+    position: absolute;
+    border: 16px solid 	#FA8072; /* Light grey */
+    border-top: 16px solid  	#D2691E; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin-left:30%;
+    margin-right:50px;
+    margin-top:50px;
+    animation: spin 2s linear infinite;
+    z-index: 4;
+}
+
+@keyframes spin 
+    {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+
+
+.home-btn
+    {
+        color:blue;
+        border:none;
+        background-color:  	#E6E6FA;
+        height:70px;
+        border-radius:100%;
+
+        font-size: 20px;
+        font-weight:bold;
+        font-family:Times New Roman Times, serif;
+    }
+.out-let-name
+{
+    font-size: 20px;
+    font-weight:bold;
+    color:white;
+    font-family:Times New Roman Times, serif;
+    background-image: url("../imgs/out-let-name-bg.png");
+}
+
+
+.view-btns
+{
+    background-color:#708090;
+    border:none;
+    width:100%;
+    height:50px;
+    border-radius:0px;
+}
+
+
+
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++ ++
+                                               +                          +
+                                               +   index page   +
+                                               +                          + 
+                                               ++++++++++++++++++++++++++++
+                                            */
+
+.home-log-img
+{
+    height: 230px;
+    width: 95%;
+    margin-top: -35px;
+    border-radius: 45px;
+}
+
+
+.home_page_fonts
+{
+    font-size: 20px;
+    font-weight:bold;
+    color:#E6E6FA;
+    font-family:Times New Roman Times, serif;
+}
+.home-holdings-btn
+    {
+        background-color:#708090;
+        border:none;
+        width:100%;
+        height:33px;
+        /* background-image: url("../imgs/home-holding-btn.png") */
+        /* border-radius:18px; */
+    }
+
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++ ++
+                                               +                          +
+                                               +   sadolin_entries_page   +
+                                               +                          + 
+                                               ++++++++++++++++++++++++++++
+                                            */
+
+
+.order-form
+{
+    background-color:white;
+    width: 65%;
+    border-radius: 50px;
+}
+
+.form_inputs
+{
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 200;
+	padding: 7px;
+	border: none;
+	border-bottom: 2px solid blue;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 45px;
+    text-align: center;
+
+}
+
+.order-inputs
+{
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 200;
+	padding: 7px;
+	border: none;
+	border-bottom: 2px solid blue;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 35px;
+    /* text-align: center; */
+
+}
+
+.form_inputs_customer
+{
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 150;
+	padding: 7px;
+	border: none;
+	border-bottom: 2px solid blue;
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 45px;
+    text-align: center;
+
+}
+.form_inputs:focus,.form_inputs_customer:focus,.order-inputs:focus
+{
+
+border-bottom: 2px solid black;
+}
+
+#inner-clear-submite-div
+{
+    /* width: 50%; */
+    background-color: inherit;
+}
+
+/* .sadolin-form-title-labels
+
+{
+    font-family: Georgia, "Times New Roman", Times, serif; 	
+    font-size: 18px; 
+    color: blue;
+    font-style: iterlic;
+    font-weight:bold;
+} */
+.submite-btn 
+{
+    /* float: right; */
+    margin-top: 15px;
+    margin-left: -10px;
+    border-radius: 50px;
+    height: 43px;
+    width: 230px;
+    background-color: #2196F3;
+}
+.entries_page_fonts
+{
+    font-size: 20px;
+    font-weight:bold;
+    color:#E6E6FA;
+    font-family:Times New Roman Times, serif;
+}
+.chint_entries_page_fonts
+{
+    font-size: 19px;
+    font-weight:bold;
+    color:#E6E6FA;
+    font-family:Times New Roman Times, serif;
+}
+.clour_types_btn
+{
+    background-color:#708090;
+    border:none;
+    width:100%;
+    height:50px;
+    border-radius:18px;
+}
+
+
+.color-types-btn
+{
+    background-image: url("../imgs/color-types-btn.png");
+    border:none;
+    width:100%;
+    height:50px;
+    border-radius:18px;
+}
+
+
+
+.clour_types_btn_close
+{
+    background-image: url("../imgs/close-btn.png");
+    border:none;
+    width:100%;
+    height:30px;
+    border-radius:10px;
+}
+
+
+.clear-btn
+{
+    width: 120px;
+    margin-left: 25px;
+    background-image: url("../imgs/clear-btn.png");
+    height:40px;
+    border-radius:50px;
+}
+.sadolin-view-all-btn
+    {
+        background-color: blue;
+        height: 30px;
+        border-radius: 25px;
+        
+    }
+
+
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++ ++
+                                               +                          +
+                                               +   make order   +
+                                               +                          + 
+                                               ++++++++++++++++++++++++++++
+                                            */
+.back-btn-label
+{
+    font-size: 20px;
+    font-weight:bold;
+    font-family:Times New Roman Times, serif;
+    color:white;
+}
+.back-btn
+{
+    background-color:black;
+    border:none;
+    width:30%;
+    height:35px;
+    border-radius:18px;
+
+    font-size: 20px;
+    font-weight:bold;
+    font-family:Times New Roman Times, serif;
+    color:white;
+}
+
+
+.form-labels-titles
+{
+    font-family: Georgia, "Times New Roman", Times, serif; 	
+    font-size: 20px; 
+    color: white;
+    font-style: normal;
+    font-weight:bold;
+}
+
+/* .agency_form
+{
+    font-family: 'Open Sans Condensed', arial, sans;
+	width: 250px;
+	padding: 30px;
+    background-image: url("../imgs/form-bg.png");
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+} */
+/* 
+.agency_form_input,.agency_form_input_cash,.terminal_inputs,.agency-form-input-name,.agency-form-input-date
+{ 
+    font-family: Georgia, "Times New Roman", Times, serif; 	
+    font-size: 16px; 	
+    color: blue;
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	
+	padding: 7px;
+    border-radius : 50px;
+	border: 2px solid blue;    
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 45px;
+    text-align: center;
+}
+
+.agency-form-input-date:focus ,.agency_form_input:focus,.agency-form-input-name:focus, .agency_form_input_cash:focus,.terminal_inputs:focus,
+    {border: 2px dashed black;}
+
+.agency_form_input
+    {width: 200px;}
+.agency_form_input_cash,.terminal_inputs
+    {width: 120px;}
+.agency-form-input-name
+    {width: 185px;}
+.agency-form-input-date
+    {width: 135px;}
+
+.agency_form_input_cash_total
+    {
+        width: 120px;
+        background-color: black;
+        color: white;
+        padding: 7px;
+        border-radius : 50px;
+        border: 2px dashed white;    
+        margin-bottom: 10px;
+        font: 16px Arial, Helvetica, sans-serif;
+        height: 45px;
+        text-align: center;
+        font-weight: bold;
+    }
+.agency_input_left_float
+    {
+        float: left;
+        margin-left: -120px;
+    }
+
+.agency_input_right_float
+    {
+        float: right;
+        margin-right: -120px;
+    } */
+/* .agency_input_right_float_date
+{
+    float: right;
+    margin-right: -116px;
+    width: 132px;
+} */
+/* 
+.agency_prev_lable{height: 23;text-align: center;}
+.agency-form-label-titles
+{
+    background-color:#708090;
+    width:200px;
+    height:50px;
+    border-radius:18px;
+}
+.agency-total-label
+{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: black;
+    height: 23px;
+    border-radius: 25px;
+}
+
+.agency-submit-btn
+{
+    background-image: url("../imgs/close-btn.png");
+    border:none;
+    width:100%;
+    height:35px;
+    border-radius:10px;
+}
+.agency-clear-btn
+{
+    background-color: #d61313;
+    border:none;
+    width:150px;
+    height:30px;
+    border-radius:10px;
+} */
+
+/* .sadolin_view_form_input
+{
+    font-family: Georgia, "Times New Roman", Times, serif; 	
+    font-size: 16px; 	
+    color: blue;
+    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 130px;
+	padding: 7px;
+    border-radius: 25px;
+	border: 2px solid blue;    
+	background: transparent;
+	margin-bottom: 10px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 43px;
+    text-align: center;
+
+
+}
+.sadolin_view_form_input:focus
+{border: 2px solid black;}
+
+.sadolin_view_form
+{
+	width: 250px;
+	padding: 30px;
+	background: #FFFFFF;
+    border-radius:25px;
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+
+
+} */
+/* 
+.sadolin_from_to_form
+{
+    font-family: 'Open Sans Condensed', arial, sans;
+	width: 300px;
+	padding: 30px;
+	background: #FFFFFF;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+} */
+
+
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++ ++
+                                               +                          +
+                                               +   agency page  view      +
+                                               +                          + 
+                                               ++++++++++++++++++++++++++++
+                                            */
+
+
+
+.view-btns-children
+{
+    background-color:black;
+    border:none;
+    width:45%;
+    height:45px;
+    border-radius:10px;
+}
+
+.close-child-btn
+{
+    width: 100%;
+    background-image: url("../imgs/submit-btn.png");
+    height:30px;
+    border-radius:50px;
+}
+
+
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++ ++
+                                               +                          +
+                                               +   Mapei entry page       +
+                                               +                          + 
+                                               ++++++++++++++++++++++++++++
+                                            */
+
+
+.type-img
+{
+    height: 100px;
+    width: 100%;
+    /* margin-top: -35px; */
+    /* border-radius: 45px; */
+
+}
+.type-img-entries
+{
+    height: 180px;
+    margin-top: -20px;
+    width: 180px;
+    border-radius: 25px;
+
+}
+.item-name-img
+{
+    height: 180px;
+    width: 50%;
+    /* margin-top: -35px; */
+    border-radius: 20px;
+
+}

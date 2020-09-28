@@ -1,0 +1,340 @@
+
+<html>
+	<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>kan kan | User</title>
+	<script src="static/js/jquery.min.js"> </script>
+	<script src="static/js/requests.js" >  </script>
+	<script src="static/js/main.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="static/css/w3.css" >
+	</head>
+	
+	<body class="main_body" onload="HideAllRootDivs ()">
+	<div id="main-header">
+			<div  id= "Navigetion" class="header">
+					<!-- ======= CLOSE ====== -->
+				<span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
+				<div id="our-avenues-menu-label-div">
+					<label class="our-avenues-label" onclick="Load_index ()" > Home</label>
+				</div><br>
+					
+					<div id="menu-items-div">
+							<div id="our-avenues-menu-label-div">
+									<label class="our-avenues-label" > Our Products</label>
+								</div><br>
+						<center>
+							<a><label onclick="Load_Rak_View ()">Rak</label></a>
+							<a><label onclick="Load_Paint_View ()">Paint</label></a>
+							<a><label onclick="Load_Chint_View ()">Chint</label></a>
+							<a><label onclick="Load_Mapei_View ()">Mapei</label></a>
+							<a><label onclick="Load_Donald_View ()">Donald</label></a>
+							<a><label onclick="Load_Panasonic_View ()">Panasonic</label></a>
+						</center>
+					</div>
+					<br>
+					<div id="our-avenues-menu-label-div">
+						<label class="our-avenues-label" onclick="Load_Subdealer_Login ()" > Sub Dealer</label>
+					</div><br>
+					
+					<div id="our-avenues-menu-label-div">
+						<label class="our-avenues-label" onclick="Load_Subdealer_Login ()" > Sub Dealer</label>
+					</div><br>
+					<div id="our-avenues-menu-label-div">
+						<label class="our-avenues-label" onclick="Load_developer ()" > Developer</label>
+					</div><br>
+			</div>
+			<div id="NaviDivHeader">
+				<label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
+				<label class="kone-label">Kan Kan builders</label>
+			</div>
+	<script>
+	function openMenus(){document.getElementById("Navigetion").style.width = "240px"}
+	function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
+	</script>
+	
+	</div> <!-- main-header-->
+	<div id="main-body" > <!-- Begin main-body div -->
+	
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<br><br>
+		<center>
+		<label class="home_page_fonts" > Name :: </label> <br>
+		<label class="home_page_fonts" > Open Blance :: </label>
+		
+		<br><br>
+		<button id="payments-btn" class="menu_btns fontstyles" > Payments </button>
+		<div id="payments-div"><br>
+			<button id="details-child-btn" class="admin-btn fontstyles" >Details</button>
+				<div id="details-child-div"><br>
+					<button id="details-view-all-btn" class="grand-child-btn fontstyles">All</button><br><br>
+						<div id="details-view-all-div">
+							<button onclick="PaymentsView ('payments_view_details','payment-show-all-tbody','details-view-all-div')" class="show-btn  entries_page_fonts"  >Show</button>
+								<div id="details-view-all-div">
+									<center>
+										<table class=" w3-bordered user-scrolling-table">
+											<tbody id="payment-show-all-tbody"></tbody>
+										</table>
+									</center>
+								</div>
+						</div>
+
+					<button id="payments-view-from-to-btn" class="grand-child-btn fontstyles">From To </button><br><br>
+					<div id="payments-view-from-to-div" >
+					</div>
+				</div>
+		<!-- 
+			========================================================================================
+			========================================================================================			
+		-->
+			<br><br>
+			<button id="reference-child-btn" class="admin-btn fontstyles" >References</button>
+				<div id="reference-child-div">
+						<center><br>
+						<p>with pics and iframe to be used</p>
+						</center>
+				</div>
+		<!-- 
+			========================================================================================
+			========================================================================================			
+		-->
+			<br><br>
+			<button id="deposit-child-btn" class="admin-btn fontstyles" >Deposit</button>
+				<div id="deposit-child-div">
+					<br>
+						<form class="order-form" action="http://127.0.0.1:4444/customerdeposit" method="POST" id="chips-assign-form">
+							<label for="uname"><b>Date</b></label><br>
+							<input type="date" placeholder="payment date" name="date" class="form_inputs" autocomplete="off" required>
+
+							<label for="uname"><b>Amount</b></label><br>
+							<input type="text" placeholder="amount" name="amount" class="form_inputs" autocomplete="off" required>
+
+
+							<label for="uname"><b>Method</b></label><br>
+							<select placeholder="method used" name="method" class="form_inputs" autocomplete="off" required>
+								<option value="Cash" >Cash</option>
+								<option value="Cheque" >Cheque</option>
+								<option value="Bank" >Bank</option>
+							</select>
+
+
+							<label for="uname"><b>Deposit To</b></label><br>
+								<select placeholder="method used" name="deposit_to" class="form_inputs" autocomplete="off" required>
+									<option value="Sales Man" >Sales Man</option>
+									<option value="DFCU" >DFC</option>
+									<option value="Centanry" >Centanry</option>
+								</select>
+
+							<label for="uname"><b>Screen Shoot</b></label><br>
+							<input type="file" name="file"><br>
+							<label for="uname">Attach picture</label><br>
+
+							<label for="uname"><b>Name</b></label><br>
+							<input type="text" placeholder="sub dealer name" name="subdealername" class="form_inputs" autocomplete="off" required>
+
+							<label for="uname"><b>Password</b></label><br>
+							<input type="text" placeholder="sub dealer pin" name="subdealerpin" class="form_inputs" autocomplete="off" required>
+
+
+
+							<button type="submit" class="submit-btn" > Submit</button><br><br>
+						</form><br>
+				</div>
+	</div>
+	
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<br><br>
+		<center>
+		<button id="orders-btn" class="menu_btns fontstyles" > Orders </button>
+		<div id="orders-div"><br>
+			<button id="orders-prices-btn" class="admin-btn fontstyles" >Prices</button>
+				<div id="orders-prices-div">
+						<center><br>
+						<p>===============</p>
+						</center>
+				</div>
+		<!-- 
+			========================================================================================
+			========================================================================================			
+		-->
+			<br><br>
+			<button id="orders-received-btn" class="admin-btn fontstyles" >Recieved</button>
+				<div id="orders-received-div">
+					<center><br>
+						<!-- <div class="w3-container">
+							<div class="w3-panel w3-light-grey w3-bottombar w3-border-blue w3-border" >
+								<p>Demo DemoDemoDemoDemo</p>
+							</div>
+						</div> -->
+						<button onclick="LoadCustomerInvoices ()">Show</button>
+						<div class="w3-container">
+								<div class="w3-panel w3-light-grey w3-bottombar w3-border-blue w3-border" >
+									<!-- <div id="order-received-display-area"></div> -->
+									<!-- <p id="order-received-display-area"></p> -->
+									<button onclick="FetchOrdersByInfo ('view_all_invoices_info','orders-recieved-tbody','orders-received-div')" class="show-btn  entries_page_fonts"  >Show</button>
+										<div id="orders-reciceved-div">
+											<center>
+												<table class=" w3-bordered user-scrolling-table">
+													<tbody id="orders-recieved-tbody"></tbody>
+												</table>
+												
+												<form class="sadolin_from_to_form" id="number-form" >
+													<label>Number</label>
+													<input class="sadolin_view_form_input" type="text" name="ordernumber" onchange="FetchOrdersByData ('view_all_invoices_data','number-tbody','number-form')" ><br>
+													
+												</form>
+												<button class="agency-show-btn entries_page_fonts"  ></button>
+												<div id="number-div" >
+													<table class=" w3-bordered user-scrolling-table">
+														<tbody id="number-tbody"></tbody>
+													</table>
+												</div>
+											</center>
+
+										</div>
+								</div>
+							</div>
+							<div ></div>
+					</center>
+				</div>
+		<!-- 
+			========================================================================================
+			========================================================================================			
+		-->
+		<br><br>
+		<button id="orders-pending-btn" class="admin-btn fontstyles" >Pending</button>
+			<div id="orders-pending-div">
+				<center><br>
+					<div class="w3-cell-row" style="width:75%">
+						<div class="w3-container w3-red w3-cell" >
+							<p>Name</p>
+						</div>
+
+						<div class="w3-container w3-green w3-cell" >
+							<p>Price</p>
+						</div>
+					</div>
+				</center>
+			</div>
+		
+		<!-- 
+			========================================================================================
+			========================================================================================			
+		-->
+		<br><br>
+		<button class="admin-btn fontstyles" onclick="LoadMakeOrderGui ()" >Make Order</button>
+	</div>
+
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<br><br>
+		<center>
+		<button id="summary-btn" class="menu_btns fontstyles" > Summary </button>
+		<div id="summary-div"><br>
+			<button id="summary-orders-btn" class="admin-btn fontstyles" >Orders</button>
+				<div id="summary-orders-div">
+					<center><br>
+					<p>===============</p>
+					</center>
+				</div>
+				<!-- 
+					========================================================================================
+					========================================================================================			
+				-->
+				<br><br>
+				<button id="summary-payments-btn" class="admin-btn fontstyles" >Payments</button>
+					<div id="summary-payments-div">
+						<center><br>
+						<p>===============</p>
+						</center>
+					</div>
+				<!-- 
+					========================================================================================
+					========================================================================================			
+				-->
+				<br><br>
+				<button id="summary-statements-btn" class="admin-btn fontstyles" >Statements</button>
+					<div id="summary-statements-div">
+						<center><br>
+							<p>Date : Transtion : Amount : Balance</p>
+							<p>Show payments and Invoices</p>
+						</center>
+						<button id="summary-view-all-btn" class="grand-child-btn fontstyles">All</button><br><br>
+						<div id="summary-view-all-div">
+							<button onclick="PaymentsView ('payments_view_details','payment-show-all-tbody','details-view-all-div')" class="show-btn  entries_page_fonts"  >Show</button>
+								<div id="details-view-all-div">
+									<center>
+										<table class=" w3-bordered user-scrolling-table">
+											<tbody id="payment-show-all-tbody"></tbody>
+										</table>
+									</center>
+								</div>
+						</div>
+
+					<button id="summary-view-from-to-btn" class="grand-child-btn fontstyles">From To </button><br><br>
+					<div id="summary-view-from-to-div" >
+					</div>
+					</div>
+				<!-- 
+					========================================================================================
+					========================================================================================			
+				-->
+			</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	<br><br>
+	<center>
+	<button class="back-btn" onclick="javascript:history.go(-1)"><< Back</button><br><br>
+	</center>
+	</div>
+	<div id="NaviDivFooter">
+		<center>
+			<label class="kone-label">Construction Supply</label>
+		</center>
+	</div>
+<script>
+	var acc = document.getElementsByClassName("interest-description-btns");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+		acc[i].onclick = function() {
+		this.classList.toggle("active");
+		var panel = this.nextElementSibling;
+		if (panel.style.maxHeight){
+			panel.style.maxHeight = null;
+		} else {
+			panel.style.maxHeight = panel.scrollHeight + "px";
+		}
+		}
+	}
+</script>
+
+	</body>
+	</html>
+	
