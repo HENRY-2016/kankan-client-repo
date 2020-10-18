@@ -1,6 +1,7 @@
 
-//var url = "http://127.0.0.1:4444/";
-var url = "http://192.168.43.140:4444/";
+// var url = "http://127.0.0.1:4444/";
+// var url = "http://192.168.43.140:4444/"; 
+var url = "http://192.168.43.23:4444/" // laptop
 
 
 
@@ -49,10 +50,10 @@ function DisplayCostPrice (type_id,size_id,cost_input_id)
     type = document.getElementById(type_id).value;
     size = document.getElementById(size_id).value;
 
-    halfltr = "0.5 ltr"
-    oneltr = "1 ltr"
-    fourltrs = "4 ltrs"
-    twentyltrs = "20 ltrs"
+    halfltr = "0.5ltr"
+    oneltr = "1ltr"
+    fourltrs = "4ltrs"
+    twentyltrs = "20ltrs"
 
     //products_prices  {"Eggshel": ["200000", "75000", "20000"], "Super": ["330000", "70000", "20000"]}
 
@@ -142,7 +143,7 @@ function CreatCustomerList(typeinputid, sizeinputid,colourinputid, qtyinputid,am
     let amount = document.getElementById(amountinputid).value;
     let total = document.getElementById(totalinputid).value;
     // creat a string
-    let liststring = type + " "+size + " " + colour + " "+ qty + " " + amount + " " + " "+ total 
+    let liststring = type + " " + colour + " "+size + " "+ qty + " " + amount + " " + " "+ total 
     console.log (liststring)
     let customerlist = document.createTextNode(liststring);
     li.appendChild(customerlist);

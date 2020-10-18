@@ -3,16 +3,30 @@
 <html>
 <head>
 <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-<title>View | Waterproofing</title>
+<title>View | Water proofing</title>
 <script src="static/js/jquery.min.js"> </script>
 <script src="static/js/main.js"></script>
-<script src="static/js/requests.js" ></script>
+<script src="static/js/bookings.js" ></script>
+<!-- <script src="static/js/requests.js" ></script> -->
 <script src="static/js/products.js" ></script>
+
 <script>
+function LoadNamesAndPrices ()
+{
+	GetProductsNames ("plascon_waterproofing_names_endpoint")
+	GetProductsPrices("plascon_waterproofing_prices_endpoint")
+}
+function InitNamesAndPrices ()
+{
+	ShowProductsNamesOptions ("type-input-id")	
+}
+
 function Onoline_Fatch_User_Online_Data ()
 {
 	Add_Product_Gallery_Iframe ("plascon_waterproofing_products_endpoint");
 	// Load_Movie_Names ("movie-name","a_names_endpoint");
+	setTimeout( LoadNamesAndPrices , 3000)
+	setTimeout(InitNamesAndPrices,4000)
 }
 function Check_Network_Status ()
 {
@@ -35,107 +49,87 @@ function Check_Network_Status ()
 		<div  id= "Navigetion" class=" w3-light-grey header">
 			<!-- ======= CLOSE ====== -->
 		<span href="javascript:void(0)" class="closebtn" onclick="CloseNavigetion()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
-		<!-- <img src="static/imgs/log.png" class="img-log-icone" ><br><br> -->
-	
-		<!-- <div id="our-products-label">
-			<label class="our-products-label" onclick="Load_index ()" > Home</label>
-		</div><br> -->
 	
 	<div id="navigetion-links-div">
 		<label class="our-products-label" > Our Products</label>
 		<div id="Drop-Down-Id">
-			<a onclick="OpenDropDown ('Paint-Id')" >Paint</a>
-			<div id="Paint-Id" class="Drop-Down-Content w3-white w3-card-4">
-				<label class="drop-down-content-label">Regal</label>
-				<!-- <label  class="drop-down-content-label"></label> -->
-				<a onclick="OpenDropDown ('Plascon-Types-Id')" >Plascon</a>
-				<div id="Plascon-Types-Id" class="Drop-Down-Content w3-white w3-card-4">
-					<label onclick="Load_Plascon_Gloss_View ()" class="drop-down-content-label">Gloss</label>
-					<label onclick="Load_Plascon_Pack_View ()" class="drop-down-content-label" >Pack</label>
-					<label  onclick="Load_Plascon_Sundry_View ()" class="drop-down-content-label" >Sundry </label>
-					<label onclick="Load_Plascon_Thinners_View ()" class="drop-down-content-label" >Thinners</label>
-					<label onclick="Load_Plascon_Varnish_View ()"class="drop-down-content-label" >Varnish</label>
-					<label onclick="Load_Plascon_Emulsion_View ()" class="drop-down-content-label">Emulsion</label>
-					<label onclick="Load_Plascon_Primers_View ()" class="drop-down-content-label" >Primers</label>
-					<label onclick="Load_Plascon_Undercoat_View ()" class="drop-down-content-label" >Undercoat</label>
-					<label onclick="Load_Plascon_Aluminium_View ()" class="drop-down-content-label" >Aluminium</label>
-					<label onclick="Load_Plascon_Industrial_View ()" class="drop-down-content-label" >Industrial</label>
-					<label onclick="Load_Plascon_Roadmarking_View ()" class="drop-down-content-label" >Roadmarking</label>
-					<label onclick="Load_Plascon_Roof_Floor_View ()" class="drop-down-content-label" >Roof & Floor</label>
-					<label onclick="Load_Plascon_waterproofing_View ()" class="drop-down-content-label" > Water proofing</label>
-					<label onclick="Load_Plascon_Architectural_finishes_View ()" class="drop-down-content-label" >Architectural  finishes</label>
-				</div>
-				<label class="drop-down-content-label">Sadolin</label>
-				<label class="drop-down-content-label">Chromatic</label>
+			<a onclick="OpenDropDown ('Plascon-Types-Id')" >Plascon</a>
+			<div id="Plascon-Types-Id" class="Drop-Down-Content w3-white w3-card-4">
+				<label onclick="Load_Plascon_Pack_View ()" class="drop-down-content-label" >Pack</label>
+				<label onclick="Load_Plascon_Gloss_View ()" class="drop-down-content-label">Gloss</label>
+				<label  onclick="Load_Plascon_Sundry_View ()" class="drop-down-content-label" >Sundry </label>
+				<label onclick="Load_Plascon_Varnish_View ()"class="drop-down-content-label" >Varnish</label>
+				<label onclick="Load_Plascon_Primers_View ()" class="drop-down-content-label" >Primers</label>
+				<label onclick="Load_Plascon_Emulsion_View ()" class="drop-down-content-label">Emulsion</label>
+				<label onclick="Load_Plascon_Thinners_View ()" class="drop-down-content-label" >Thinners</label>
+				<label onclick="Load_Plascon_Undercoat_View ()" class="drop-down-content-label" >Undercoat</label>
+				<label onclick="Load_Plascon_Aluminium_View ()" class="drop-down-content-label" >Aluminium</label>
+				<!-- <label onclick="Load_Plascon_Industrial_View ()" class="drop-down-content-label" >Industrial</label> -->
+				<label onclick="Load_Plascon_Roof_Floor_View ()" class="drop-down-content-label" >Roof & Floor</label>
+				<label onclick="Load_Plascon_Roadmarking_View ()" class="drop-down-content-label" >Roadmarking</label>
+				<label onclick="Load_Plascon_waterproofing_View ()" class="drop-down-content-label" > Water proofing</label>
+				<label onclick="Load_Plascon_Architectural_finishes_View ()" class="drop-down-content-label" >Architectural  finishes</label>
 			</div>
 	
 			<a onclick="OpenDropDown ('Plumbing-Id')" >Plumbing</a>
 			<div id="Plumbing-Id" class="Drop-Down-Content w3-white w3-card-4">
 				<label class="content-sub-title-labels" >Fittings</label>
+				<!--
 				<label class="drop-down-content-label">GI </label>
 				<label class="drop-down-content-label">PE </label>
 				<label class="drop-down-content-label">PPR </label>
-				<label class="drop-down-content-label">PVC </label>
-				<label class="content-sub-title-labels" >Ceremics</label>
-					<label onclick="Load_Donald_View ()" class="drop-down-content-label">Toilets</label>
-					<label class="drop-down-content-label">Kitchen</label>
+				<label class="drop-down-content-label">PVC </label> 
+				-->
+				<!-- <label class="content-sub-title-labels" >Ceremics</label> -->
+					<!-- <label onclick="Load_Donald_View ()" class="drop-down-content-label">Toilets</label> -->
+					<label class="drop-down-content-label">Kitchen </label>
 					<label class="drop-down-content-label">Bathroom</label>
 	
 			</div>
 	
 			<a onclick="OpenDropDown ('Electricals-Id')" >Electricals</a>
 			<div id="Electricals-Id" class="Drop-Down-Content w3-white w3-card-4">
-				<label onclick="Load_Chint_View()" class="drop-down-content-label">Chint</label>
-				<label onclick="Load_Panasonic_View ()" class="drop-down-content-label">Panasonic</label>
+				<label class="drop-down-content-label">Chint</label>
+				<label  class="drop-down-content-label">Panasonic</label>
+				<!-- 
+					onclick="Load_Chint_View()"
+					onclick="Load_Panasonic_View ()"
+					-->
 			</div>
 	
-			<a onclick="OpenDropDown ('Floor-Walls-Id')" >Floor & Walls</a>
+			<a onclick="OpenDropDown ('Floor-Walls-Id')" > Floor Products </a>
 			<div id="Floor-Walls-Id" class="Drop-Down-Content w3-white w3-card-4">
-					<label class="content-sub-title-labels" >Walls</label>
-						<label class="drop-down-content-label">Glamora</label>
-					<label class="content-sub-title-labels" >Floor</label>
-						<label class="drop-down-content-label">Veluti</label>
+					<label class="content-sub-title-labels" >Italian Floors</label>
+						<!-- <label class="drop-down-content-label">Glamora</label> -->
+					<!-- <label class="content-sub-title-labels" >Floor</label> -->
+						<label class="drop-down-content-label">Veluti Veneti</label>
+					<label class="content-sub-title-labels" >Tiles</label>
 						<label class="drop-down-content-label">Twyford</label>
 						<label class="drop-down-content-label">Goodwill</label>
 			</div>
 			<a onclick="OpenDropDown ('Water-Proofing-Id')" >Water Proofing</a>
 			<div id="Water-Proofing-Id" class="Drop-Down-Content w3-white w3-card-4">
 				<label class="drop-down-content-label">Mapei</label>
-				<label class="drop-down-content-label">Dr. Fix it</label>
-				<label class="drop-down-content-label">Plascon</label>
-				<label class="drop-down-content-label">Sadolin</label>
+				<!-- <label class="drop-down-content-label">Dr. Fix it</label> -->
+				<!-- <label class="drop-down-content-label">Plascon</label> -->
+				<!-- <label class="drop-down-content-label">Sadolin</label> -->
 			</div>
 	
-			<a onclick="OpenDropDown ('Building-Materials-Id')" >Building Materials</a>
+			<!-- <a onclick="OpenDropDown ('Building-Materials-Id')" >Building Materials</a>
 			<div id="Building-Materials-Id" class="Drop-Down-Content w3-white w3-card-4">
 				<label class="drop-down-content-label">Major</label>
 				<label class="drop-down-content-label">Minor</label>
 				<label class="drop-down-content-label" >Others</label>
-			</div>
+			</div> -->
 			
 		</div>
-			
-	
-			<!-- <a><label onclick="Load_Rak_View ()">Rak</label></a>
-			<a><label >Paint</label></a>
-			<a><label  ()">Chint</label></a>
-			<a><label onclick="Load_Mapei_View ()">Mapei</label></a>
-			<a><label >Donald</label></a>
-			<a><label >Panasonic</label></a> -->
-			
 		
 	</div>
-	<!-- <br>
-	<div id="our-products-label">
-		<label class="our-products-label" onclick="Load_Subdealer_Login ()" > Sub Dealer</label>
-	</div><br>
-	<div id="our-products-label">
-		<label class="our-products-label" onclick="Load_developer ()" > Developer</label>
-	</div><br> -->
+	
 	</div>
 	<div id="NaviDivHeader">
 		<label class="kone-menu-label" onclick="OpenNavigetion()">&#9776;</label>
-		<label class="kone-label">Kan Kan builders</label>
+		<label class="kone-label">KanKan builders</label>
 	</div>
 	<script>
 	function OpenNavigetion(){document.getElementById("Navigetion").style.width = "250px"}
@@ -148,10 +142,11 @@ function Check_Network_Status ()
 	</script>
 	
 	</div> <!-- main-header-->    
+		
 <div id="main-body" > <!-- Begin main-body div -->
 	<center>
-    <br>
-    <img src="static/imgs/rak.png" class="products-log-incone" >
+	<br>
+	<!-- <img src="static/imgs/rak.png" class="products-log-incone" > -->
 	
 	<br><br>
 	<label id="prices-from-server-label" style="display:none" > </label>
@@ -161,12 +156,60 @@ function Check_Network_Status ()
 	</center><br>
 
 </div>
-<center><button onclick="Load_Paint_Booking_Gui ()"  class="customer-booking-btn fontstyles" >Book Now</button></center><br>
-
+<center>
+		<button class="shop-btn fontstyles" onclick="document.getElementById('id01').style.display='block'" >Book Now</button>
+		<div id="id01" class="w3-modal" >
+				<div class="w3-modal-content">
+					<div class="w3-container">
+						<br>
+						<script>
+							function close_popup_window (){document.getElementById('id01').style.display='none';document.getElementById("products-form").reset();}
+						</script>
+						<span onclick="close_popup_window ()" class=" close-x fontstyles">X</span>
+						<div id="order-inputs" class="header-order-modal">
+							<center>
+								<form id="products-form" >
+									<select id="type-input-id" name="paint_name" placeholder="Type" class="paint-name order-inputs"><option>Type</option></select>
+									<select id="size-input-id" onchange="DisplayCostPrice ('type-input-id','size-input-id','cost-price-id')" name="paint_name" id="size-id" placeholder="Size" class="paint-name order-inputs">
+										<option>Size</option>
+										<option value="0.5ltr" >0.5 ltr</option>
+										<option value="1ltr" >1 ltr</option>
+										<option value="4ltrs" >4 ltrs</option>
+										<option value="20ltrs" >20 ltrs</option>
+									</select>
+									<select id="colour-input-id" placeholder="Colour" class="paint-name order-inputs">
+										<option>Colour</option>
+										<option value="Black" >Black</option>
+										<option value="White" >White</option>
+										<option value="Beige" >Beige</option>
+									</select>
+									<input  id="qty-input-id"  onchange="CalculateSubTotaPrice('qty-input-id','cost-price-id','total-input-id')" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
+									<input id="cost-price-id"  readonly class="order-inputs" type="text"  name="paint_name" placeholder="Cost" />
+									<input id="total-input-id" readonly class="subtotalinputs order-inputs" name="paint_name" placeholder="Total" type="text"/>
+								</form>
+								<button onclick="CreatCustomerList('type-input-id','size-input-id','colour-input-id','qty-input-id','cost-price-id','total-input-id','un-ordered-list-id')" class="add-btn-order-modal">Add</button>
+							</center>
+						</div>
+						<div>
+							<ul id="un-ordered-list-id">
+								<label>Customer list</label>
+							</ul>
+							<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Customer Name"  name="paint_name" />
+							<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Contacts" name="paint_name" />
+							<input id="amount-id-1"  class="order-inputs " type="date"  name="paint_name" />
+							<input id="final-total-id" class="subtotalinputs order-inputs" name="paint_name" placeholder="Final Total" type="text"/>
+						</div>
+						<button  id="total-btn" >Total</button>
+						<button onclick="CreateArray ()" >creat</button>
+					</div>
+				</div>
+			</div>
+		</center><br>
+		
 <div id="NaviDivFooter">
-    <center>
-        <label class="kone-label">Construction Supply</label>
-    </center>
+	<center>
+		<label class="kone-label">Construction Supply</label>
+	</center>
 </div>
 </body>
 </html>

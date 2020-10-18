@@ -15,10 +15,6 @@
 
 
     <allow-navigation href="*" />
-
-    <!-- This url is allowed to open to server -->
-    <!-- <allow-intent href="http://10.42.0.1:4444/*" /> -->
-
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

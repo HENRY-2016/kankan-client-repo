@@ -1,6 +1,7 @@
 
 // var src_url = "http://127.0.0.1:4444/"
-var src_url = "http://192.168.43.140:4444/"
+// var src_url = "http://192.168.43.140:4444/"
+var src_url = "http://192.168.43.23:4444/" // laptop
 // Product Gallery
 function Add_Product_Gallery_Iframe (endpoint)
 {
