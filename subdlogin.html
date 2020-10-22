@@ -1,252 +1,189 @@
-
+<!DOCTYPE html>
 <html>
-	<head>
-	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-	<title>kan kan | User</title>
-	<script src="static/js/jquery.min.js"> </script>
-	<script src="static/js/main.js"></script>
-	<script src="static/js/requests.js" >  </script>
-
-	<link rel="stylesheet" type="text/css" href="static/css/main.css">
-	<link rel="stylesheet" type="text/css" href="static/css/w3.css" >
-	<style>
-	modalContainer {
-	background-color:rgba(0, 0, 0, 0.3);
-	position:absolute;
-	width:100%;
-	height:100%;
-	top:0px;
-	left:0px;
-	z-index:10000;
-	background-image:url(tp.png); /* required by MSIE to prevent actions on lower z-index elements */
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
 }
 
-#alertBox {
-	position:relative;
-	width:300px;
-	min-height:100px;
-	margin-top:50px;
-	border:1px solid #666;
-	background-color:#fff;
-	background-repeat:no-repeat;
-	background-position:20px 30px;
+body {
+  font: 16px Arial;  
 }
 
-#modalContainer > #alertBox {
-	position:fixed;
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
 }
 
-#alertBox h1 {
-	margin:0;
-	font:bold 0.9em verdana,arial;
-	background-color:#3073BB;
-	color:#FFF;
-	border-bottom:1px solid #000;
-	padding:2px 0 2px 5px;
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
 }
 
-#alertBox p {
-	font:0.7em verdana,arial;
-	height:50px;
-	padding-left:5px;
-	margin-left:55px;
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
 }
 
-#alertBox #closeBtn {
-	display:block;
-	position:relative;
-	margin:5px auto;
-	padding:7px;
-	border:0 none;
-	width:70px;
-	font:0.7em verdana,arial;
-	text-transform:uppercase;
-	text-align:center;
-	color:#FFF;
-	background-color:#357EBD;
-	border-radius: 3px;
-	text-decoration:none;
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
 }
 
-/* unrelated styles */
-
-#mContainer {
-	position:relative;
-	width:600px;
-	margin:auto;
-	padding:5px;
-	border-top:2px solid #000;
-	border-bottom:2px solid #000;
-	font:0.7em verdana,arial;
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
 }
 
-h1,h2 {
-	margin:0;
-	padding:4px;
-	font:bold 1.5em verdana;
-	border-bottom:1px solid #000;
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
 }
 
-code {
-	font-size:1.2em;
-	color:#069;
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
 }
 
-#credits {
-	position:relative;
-	margin:25px auto 0px auto;
-	width:350px; 
-	font:0.7em verdana;
-	border-top:1px solid #000;
-	border-bottom:1px solid #000;
-	height:90px;
-	padding-top:4px;
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+</style>
+</head>     
+<body>
+
+<h2>Autocomplete</h2>
+
+<p>Start typing:</p>
+
+<!--Make sure the form has the autocomplete function switched off:-->
+<form autocomplete="off" action="/action_page.php">
+  <div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text" name="myCountry" placeholder="Country">
+  </div>
+  <input type="submit">
+</form>
+
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
 }
 
-#credits img {
-	float:left;
-	margin:5px 10px 5px 0px;
-	border:1px solid #000000;
-	width:80px;
-	height:79px;
-}
+/*An array containing all the country names in the world:*/
+var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
 
-.important {
-	background-color:#F5FCC8;
-	padding:2px;
-}
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("myInput"), countries);
+</script>
 
-code span {
-	color:green;
-}
-	
-	</style>
-	</head>
-	
-	<body class="main_body">
-	<div id="main-header">
-			<div  id= "Navigetion" class="header">
-					<!-- ======= CLOSE ====== -->
-				<span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
-				<img src="static/imgs/log.png" class="img-log-icone" ><br><br>
-
-				<div id="our-avenues-menu-label-div">
-					<label class="our-avenues-label" onclick="Load_index ()" > Home</label>
-				</div><br>
-					
-					<div id="menu-items-div">
-							<div id="our-avenues-menu-label-div">
-									<label class="our-avenues-label" > Our Products</label>
-								</div><br>
-						<center>
-							<a><label onclick="Load_Rak_View ()">Rak</label></a>
-							<a><label onclick="Load_Paint_View ()">Paint</label></a>
-							<a><label onclick="Load_Chint_View ()">Chint</label></a>
-							<a><label onclick="Load_Mapei_View ()">Mapei</label></a>
-							<a><label onclick="Load_Donald_View ()">Donald</label></a>
-							<a><label onclick="Load_Panasonic_View ()">Panasonic</label></a>
-									
-						</center>
-					</div>
-					<br>
-					<div id="our-avenues-menu-label-div">
-						<label class="our-avenues-label" onclick="Load_Subdealer_Login ()" > Sub Dealer</label>
-					</div><br>
-					<div id="our-avenues-menu-label-div">
-						<label class="our-avenues-label" onclick="Load_developer ()" > Developer</label>
-					</div><br>
-			</div>
-			<div id="NaviDivHeader">
-				<label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
-				<label class="kone-label">Kan Kan builders</label>
-			</div>
-	<script>
-	function openMenus(){document.getElementById("Navigetion").style.width = "240px"}
-	function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
-	</script>
-	
-	</div> <!-- main-header-->
-	<div id="main-body" > <!-- Begin main-body div -->
-		<center>
-			<br>
-			<form class="order-form" action="http://192.168.43.140:6060/chips_assign_staff_name" method="POST" id="chips-assign-form">
-				<label for="uname"><b>Name</b></label><br>
-				<input type="date" placeholder="payment date" name="date" class="form_inputs" autocomplete="off" required>
-
-				<label for="uname"><b>Password</b></label><br>
-				<input type="text" placeholder="amount" name="amount" class="form_inputs" autocomplete="off" required>
-				<br>
-			</form><br>
-			<button type="submit" class="submit-btn" onclick="LoadCustomerGui ()"> Done</button><br><br>
-		</center>
-	</div>
-	<div id="NaviDivFooter">
-			<center>
-				<label class="kone-label">Construction Supply</label>
-			</center>
-		</div>
-
-
-
-
-
-
-
-
-		<input type="button" value = "Test the alert" onclick="alert('Alert this pages');" />
-	<script>
-	
-	var ALERT_TITLE = "Oops!";
-var ALERT_BUTTON_TEXT = "Ok";
-
-if(document.getElementById) {
-	window.alert = function(txt) {
-		createCustomAlert(txt);
-	}
-}
-
-function createCustomAlert(txt) {
-	d = document;
-
-	if(d.getElementById("modalContainer")) return;
-
-	mObj = d.getElementsByTagName("body")[0].appendChild(d.createElement("div"));
-	mObj.id = "modalContainer";
-	mObj.style.height = d.documentElement.scrollHeight + "px";
-	
-	alertObj = mObj.appendChild(d.createElement("div"));
-	alertObj.id = "alertBox";
-	if(d.all && !window.opera) alertObj.style.top = document.documentElement.scrollTop + "px";
-	alertObj.style.left = (d.documentElement.scrollWidth - alertObj.offsetWidth)/2 + "px";
-	alertObj.style.visiblity="visible";
-
-	h1 = alertObj.appendChild(d.createElement("h1"));
-	h1.appendChild(d.createTextNode(ALERT_TITLE));
-
-	msg = alertObj.appendChild(d.createElement("p"));
-	//msg.appendChild(d.createTextNode(txt));
-	msg.innerHTML = txt;
-
-	btn = alertObj.appendChild(d.createElement("a"));
-	btn.id = "closeBtn";
-	btn.appendChild(d.createTextNode(ALERT_BUTTON_TEXT));
-	btn.href = "#";
-	btn.focus();
-	btn.onclick = function() { removeCustomAlert();return false; }
-
-	alertObj.style.display = "block";
-	
-}
-
-function removeCustomAlert() {
-	document.getElementsByTagName("body")[0].removeChild(document.getElementById("modalContainer"));
-}
-function ful(){
-alert('Alert this pages');
-}
-
-
-	</script>
-	</body>
-	</html>
-	
+</body>
+</html>

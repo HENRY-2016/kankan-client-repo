@@ -197,7 +197,7 @@ function CreatCustomerList(typeinputid, sizeinputid,colourinputid, qtyinputid,am
 
     let span = document.createElement("SPAN");
     let x_txt = document.createTextNode("\u00D7");
-    span.className = "close";
+    span.className = "close-x-on-lists";
     // span.
     span.appendChild(x_txt);
     li.appendChild(span);
@@ -217,9 +217,9 @@ function CreatCustomerList(typeinputid, sizeinputid,colourinputid, qtyinputid,am
 function CalculateSubtotalAutomatically ()
 {
     // this computs the sub - tatol automatically
-    let type_input_id = document.getElementById("type-input-id").value;
-    let size_input_id = document.getElementById("size-input-id").value;
-    let colour_input_id  = document.getElementById("colour-input-id").value;
+    // let type_input_id = document.getElementById("type-input-id").value;
+    // let size_input_id = document.getElementById("size-input-id").value;
+    // let colour_input_id  = document.getElementById("colour-input-id").value;
     let qty_input_id  = document.getElementById("qty-input-id").value;
     let cost_price_id = document.getElementById("cost-price-id").value;
 
@@ -231,7 +231,7 @@ function CalculateSubtotalAutomatically ()
             document.getElementById("total-input-id").value =  formatedprice;
 
         }
-    else{alert("feild cost_price_id or qty_price_id is empty")}
+    // else{alert("feild cost_price_id or qty_price_id is empty")}
 }
 
 // collecting data

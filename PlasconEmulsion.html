@@ -160,7 +160,15 @@ function Check_Network_Status ()
 
 </div>
 <center>
-		<button class="shop-btn fontstyles" onclick="document.getElementById('id01').style.display='block'" >Book Now</button>
+		<button class="shop-btn fontstyles" onclick="OpenBookingPopUP ()" >Book Now</button>
+		<script>
+			function OpenBookingPopUP ()
+			{
+				document.getElementById('id01').style.display='block'
+				setInterval(CalculateSubtotalAutomatically,1000)
+
+			}
+		</script>
 		<div id="id01" class="w3-modal" >
 				<div class="w3-modal-content">
 					<div class="w3-container">
@@ -182,7 +190,7 @@ function Check_Network_Status ()
 										<option value="20ltrs" >20 ltrs</option>
 									</select>
 									<label class="input-discription-labels">colour name</label>
-									<select id="colour-input-id" onchange="CalculateSubtotalAutomatically ()" placeholder="Colour" class="paint-name order-inputs"><option></option></select>
+									<select id="colour-input-id" placeholder="Colour" class="paint-name order-inputs"><option></option></select>
 									<input  id="qty-input-id" onchange="CalculateSubTotaPrice('qty-input-id','cost-price-id','total-input-id')" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
 									<input id="cost-price-id"  readonly class="order-inputs" type="text"  name="paint_name" placeholder="Cost" />
 									<input id="total-input-id" readonly class="subtotalinputs order-inputs" name="paint_name" placeholder="Total" type="text"/>
