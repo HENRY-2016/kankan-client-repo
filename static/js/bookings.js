@@ -7,6 +7,7 @@ var url = "http://192.168.43.23:4444/" // laptop
 
 var products_names
 var products_prices
+var paint_colours
 function GetProductsNames ( urlendpoint)
 {
     let namesrequest = new XMLHttpRequest ();
@@ -15,11 +16,24 @@ function GetProductsNames ( urlendpoint)
             if ( namesrequest.readyState == 4 && namesrequest.status == 200)
                 {
                     products_names = JSON.parse(namesrequest.responseText)
-                    // console.log(products_names)
                 }
         }
     namesrequest.open("GET", url + urlendpoint );    
     namesrequest.send();
+}
+
+function GetPaintColours ( urlendpoint)
+{
+    let coloursrequest = new XMLHttpRequest ();
+    coloursrequest.onreadystatechange = function ()
+        {
+            if ( coloursrequest.readyState == 4 && coloursrequest.status == 200)
+                {
+                    paint_colours = JSON.parse(coloursrequest.responseText)
+                }
+        }
+    coloursrequest.open("GET", url + urlendpoint );    
+    coloursrequest.send();
 }
 
 function GetProductsPrices ( urlendpoint)
@@ -42,6 +56,14 @@ function ShowProductsNamesOptions (html_id)
     let html_select_input = document.getElementById(html_id);
         for (index in products_names)
             {html_select_input.options[html_select_input.options.length] = new Option(products_names[index],index);}    
+}
+
+
+function ShowPaintColoursOptions (html_id)
+{
+    let html_select_input = document.getElementById(html_id);
+        for (index in paint_colours)
+            {html_select_input.options[html_select_input.options.length] = new Option(paint_colours[index],index);}    
 }
 
 
@@ -96,12 +118,25 @@ function DisplayCostPrice (type_id,size_id,cost_input_id)
 
 function CalculateSubTotaPrice (qty_id, cost_price_id, subtotal_id)
 {
-    console.log("func called...")
+    let type_input_id = document.getElementById("type-input-id").value;
+    let size_input_id = document.getElementById("size-input-id").value;
+    let colour_input_id  = document.getElementById("colour-input-id").value;
+
     let qty_input = document.getElementById(qty_id).value;
     let cost_price = document.getElementById(cost_price_id).value;
-	let price = parseFloat(qty_input) * parseFloat(cost_price);    
-	let formatedprice = price.toLocaleString();
-	document.getElementById(subtotal_id).value =  formatedprice;
+    
+    if (type_input_id == "" || size_input_id == "" || colour_input_id =="" )
+        {
+            alert("Please select Type,Size and Colour Fisrt")
+        }
+    else
+        {
+            qty_input.isInteger()    
+            let price = parseFloat(qty_input) * parseFloat(cost_price);    
+            let formatedprice = price.toLocaleString();
+            document.getElementById(subtotal_id).value =  formatedprice;
+            
+        }
 }
 
 
@@ -144,10 +179,12 @@ function CreatCustomerList(typeinputid, sizeinputid,colourinputid, qtyinputid,am
     let total = document.getElementById(totalinputid).value;
     // creat a string
     let liststring = type + " " + colour + " "+size + " "+ qty + " " + amount + " " + " "+ total 
-    console.log (liststring)
     let customerlist = document.createTextNode(liststring);
     li.appendChild(customerlist);
-    if (type === '' || qty === '') {alert("You must write something!");} 
+    if (type === '' || size == '' ||colour == '' || qty === '') 
+        {
+            alert("Enter Type,Size, Colour Quantity");
+        } 
     else {document.getElementById(unorderedlistid).appendChild(li);}
     
     // clear the inputs
@@ -176,6 +213,26 @@ function CreatCustomerList(typeinputid, sizeinputid,colourinputid, qtyinputid,am
     }
 }
 
+
+function CalculateSubtotalAutomatically ()
+{
+    // this computs the sub - tatol automatically
+    let type_input_id = document.getElementById("type-input-id").value;
+    let size_input_id = document.getElementById("size-input-id").value;
+    let colour_input_id  = document.getElementById("colour-input-id").value;
+    let qty_input_id  = document.getElementById("qty-input-id").value;
+    let cost_price_id = document.getElementById("cost-price-id").value;
+
+    if (!cost_price_id == '' & !qty_input_id =='')
+        {
+            // qty_input_id.isInteger()    
+            let price = parseFloat(qty_input_id) * parseFloat(cost_price_id);    
+            let formatedprice = price.toLocaleString();
+            document.getElementById("total-input-id").value =  formatedprice;
+
+        }
+    else{alert("feild cost_price_id or qty_price_id is empty")}
+}
 
 // collecting data
 function CreateArray ()
@@ -208,7 +265,6 @@ console.log("=====================")
 // Email :: namazzimaria2020@gmail.com
 // pas :: maria2020
 }
-
 
 
 $(document).ready ( function () 

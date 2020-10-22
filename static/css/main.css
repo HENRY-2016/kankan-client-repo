@@ -3,7 +3,11 @@
 /*  	#808080 */
 /* .main_body { background-color:#ADD8E6 } */
 /* .main_body { background-color:#E6E6FA } */
-.main_body { background-color:#808080}
+.main_body 
+{ 
+    background-color:#808080;
+    /* height: auto; */
+}
 
 .myfont,.list-class
 {
@@ -27,9 +31,16 @@
 {
     width:100%;
     height: 100%;
-    margin-top: -2px;
-    /* margin-bottom: 20px; */
+    margin-top: -1%;
     align-content: center;
+    
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 4px 4px 14px #000;
+    -webkit-box-shadow: 4px 4px 14px #000;
+    box-shadow: 4px 4px 14px #000;
+
 }
 .Offline-Label
 {
@@ -135,12 +146,23 @@
     background-color:blue;
     color: white;
     font-weight: bold;
+    margin-top: 4%;
+    margin-bottom: 0%;
     border:none;
     width:50%;
     height:40px;
     border-radius:18px;
 }
-
+.paint-types-label
+{
+    color: blue;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+    /* font-weight:100; */
+    font-family:Times New Roman Times, serif;
+}
 
 .grand-child-btn
 {
@@ -220,7 +242,10 @@
                                                ++++++++++++++++++++++++++++
                                                */
 
-
+.input-discription-labels
+{
+    color: black;
+}
 /* Include the padding and border in an element's total width and height */
 *{box-sizing: border-box;}
 
@@ -356,12 +381,7 @@ ul li.checked::before {
     font-family:Times New Roman Times, serif;
     /* font-weight:bold; */
 }
-.close-navi-span
-{
-    background-color: red;
-    border-radius: 60px;
-    color:#00008B;
-}
+
 .our-label-menu
 {
     color:blue;
@@ -428,10 +448,17 @@ a:hover{background-color:#E6E6FA;}
 
     position:absolute;
     right: 2px;
-    margin-left:50px;
+    /* margin-left:50%; */
     top:0;
     font-size:30px;
-
+    width: 20%;
+    height: 9%;
+    background-color: red;
+}
+.close-navi-span
+{
+ font-size: 20px;
+ text-align: center;
 }
 #navigetion-links-div
 {
@@ -443,11 +470,11 @@ a:hover{background-color:#E6E6FA;}
         background-color: #A9A9A9;
         height:16%;
     }
-#NaviDivFooter
+/* #NaviDivFooter
 {
     background-color:#A9A9A9;
     height:50px;
-}
+} */
 .our-products-label
 {
     color:black;
@@ -465,14 +492,15 @@ a:hover{background-color:#E6E6FA;}
     /* color:#00008B; */
     color: white;
 }
-.kone-label
+.title-label
 {
-    font-size: 100%;
+    font-size: 17px;
     color:white;
     font-weight: bold;
     font-style: italic;
-    margin-top: -400px;
-    margin-left: 20px;
+    margin-top: -100px;
+    margin-left: 10%;
+    margin-right: 10%;
     font-family:Times New Roman Times, serif;
 }
 

@@ -15,10 +15,13 @@ function LoadNamesAndPrices ()
 {
 	GetProductsNames ("plascon_emulsion_names_endpoint")
 	GetProductsPrices("plascon_emulsion_prices_endpoint")
+	GetPaintColours ("paint_colours_endpoint")
+
 }
 function InitNamesAndPrices ()
 {
-	ShowProductsNamesOptions ("type-input-id")	
+	ShowProductsNamesOptions ("type-input-id")
+	ShowPaintColoursOptions("colour-input-id")	
 }
 
 function Onoline_Fatch_User_Online_Data ()
@@ -129,7 +132,7 @@ function Check_Network_Status ()
 	</div>
 	<div id="NaviDivHeader">
 		<label class="kone-menu-label" onclick="OpenNavigetion()">&#9776;</label>
-		<label class="kone-label">KanKan builders</label>
+		<label class="title-label">Emulsion paint</label>
 	</div>
 	<script>
 	function OpenNavigetion(){document.getElementById("Navigetion").style.width = "250px"}
@@ -147,7 +150,7 @@ function Check_Network_Status ()
 	<center>
 	<br>
 	<!-- <img src="static/imgs/rak.png" class="products-log-incone" > -->
-	
+	<label class="paint-types-label" >Emulsion Water Based Products</label>
 	<br><br>
 	<label id="prices-from-server-label" style="display:none" > </label>
 	<label id="created-prices" style="display:none" ></label>
@@ -169,21 +172,18 @@ function Check_Network_Status ()
 						<div id="order-inputs" class="header-order-modal">
 							<center>
 								<form id="products-form" >
-									<select id="type-input-id" name="paint_name" placeholder="Type" class="paint-name order-inputs"><option>Type</option></select>
+									<label class="input-discription-labels">product type</label>
+									<select id="type-input-id" name="paint_name" placeholder="Type" class="paint-name order-inputs"><option></option></select>
+									<label class="input-discription-labels">select size</label>
 									<select id="size-input-id" onchange="DisplayCostPrice ('type-input-id','size-input-id','cost-price-id')" name="paint_name" id="size-id" placeholder="Size" class="paint-name order-inputs">
-										<option>Size</option>
-										<option value="0.5ltr" >0.5 ltr</option>
+										<option></option>
 										<option value="1ltr" >1 ltr</option>
 										<option value="4ltrs" >4 ltrs</option>
 										<option value="20ltrs" >20 ltrs</option>
 									</select>
-									<select id="colour-input-id" placeholder="Colour" class="paint-name order-inputs">
-										<option>Colour</option>
-										<option value="Black" >Black</option>
-										<option value="White" >White</option>
-										<option value="Beige" >Beige</option>
-									</select>
-									<input  id="qty-input-id"  onchange="CalculateSubTotaPrice('qty-input-id','cost-price-id','total-input-id')" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
+									<label class="input-discription-labels">colour name</label>
+									<select id="colour-input-id" onchange="CalculateSubtotalAutomatically ()" placeholder="Colour" class="paint-name order-inputs"><option></option></select>
+									<input  id="qty-input-id" onchange="CalculateSubTotaPrice('qty-input-id','cost-price-id','total-input-id')" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
 									<input id="cost-price-id"  readonly class="order-inputs" type="text"  name="paint_name" placeholder="Cost" />
 									<input id="total-input-id" readonly class="subtotalinputs order-inputs" name="paint_name" placeholder="Total" type="text"/>
 								</form>
@@ -208,7 +208,7 @@ function Check_Network_Status ()
 		
 <!-- <div id="NaviDivFooter">
 	<center>
-		<label class="kone-label">Construction Supply</label>
+		<label class="title-label">Construction Supply</label>
 	</center>
 </div> -->
 
