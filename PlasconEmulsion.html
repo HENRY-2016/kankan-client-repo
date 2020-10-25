@@ -6,8 +6,8 @@
 <title>View | Emulsion</title>
 <script src="static/js/jquery.min.js"> </script>
 <script src="static/js/main.js"></script>
-<script src="static/js/bookings.js" ></script>
-<!-- <script src="static/js/requests.js" ></script> -->
+<!-- <script src="static/js/bookings.js" ></script> -->
+<script src="static/js/test.js" ></script>
 <script src="static/js/products.js" ></script>
 
 <script>
@@ -126,13 +126,15 @@ function Check_Network_Status ()
 			</div> -->
 			
 		</div>
+		<label onclick="Load_Subdealer_Log_In ()" class="drop-down-content-label" >Subdealer</label>
+
 		
 	</div>
 	
 	</div>
 	<div id="NaviDivHeader">
-		<label class="kone-menu-label" onclick="OpenNavigetion()">&#9776;</label>
-		<label class="title-label">Emulsion paint</label>
+		<label class="open-navigation-label" onclick="OpenNavigetion()">&#9776;</label>
+		<!-- <label class="title-label">Emulsion paint</label> -->
 	</div>
 	<script>
 	function OpenNavigetion(){document.getElementById("Navigetion").style.width = "250px"}
@@ -160,9 +162,9 @@ function Check_Network_Status ()
 
 </div>
 <center>
-		<button class="shop-btn fontstyles" onclick="OpenBookingPopUP ()" >Book Now</button>
+		<button class="shop-btn fontstyles" onclick="OpenBookingPopUp ()" >Book Now</button>
 		<script>
-			function OpenBookingPopUP ()
+			function OpenBookingPopUp ()
 			{
 				document.getElementById('id01').style.display='block'
 				setInterval(CalculateSubtotalAutomatically,1000)
@@ -173,10 +175,17 @@ function Check_Network_Status ()
 				<div class="w3-modal-content">
 					<div class="w3-container">
 						<br>
-						<script>
-							function close_popup_window (){document.getElementById('id01').style.display='none';document.getElementById("products-form").reset();}
-						</script>
 						<span onclick="close_popup_window ()" class=" close-x fontstyles">X</span>
+						<script>
+							function close_popup_window ()
+								{
+									document.getElementById('id01').style.display='none';
+									document.getElementById("products-form").reset();
+									document.getElementById("customer-info-form").reset();
+									clearInterval(CalculateSubtotalAutomatically);
+									clearInterval(CalculateGrandtotalAutomatically);
+								}
+						</script>
 						<div id="order-inputs" class="header-order-modal">
 							<center>
 								<form id="products-form" >
@@ -191,21 +200,32 @@ function Check_Network_Status ()
 									</select>
 									<label class="input-discription-labels">colour name</label>
 									<select id="colour-input-id" placeholder="Colour" class="paint-name order-inputs"><option></option></select>
-									<input  id="qty-input-id" onchange="CalculateSubTotaPrice('qty-input-id','cost-price-id','total-input-id')" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
+									<!-- <input  id="qty-input-id" onchange="CalculateSubTotaPrice('qty-input-id','cost-price-id','total-input-id')" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" /> -->
+									<input  id="qty-input-id" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
+
 									<input id="cost-price-id"  readonly class="order-inputs" type="text"  name="paint_name" placeholder="Cost" />
 									<input id="total-input-id" readonly class="subtotalinputs order-inputs" name="paint_name" placeholder="Total" type="text"/>
 								</form>
-								<button onclick="CreatCustomerList('type-input-id','size-input-id','colour-input-id','qty-input-id','cost-price-id','total-input-id','un-ordered-list-id')" class="add-btn-order-modal">Add</button>
+								<button onclick="CreatCustomerListAndGrandtotal ()" class="add-btn-order-modal">Add</button>
+								<script>
+									function CreatCustomerListAndGrandtotal ()
+										{
+											CreatCustomerList('type-input-id','size-input-id','colour-input-id','qty-input-id','cost-price-id','total-input-id','un-ordered-list-id');	
+											setInterval(CalculateGrandtotalAutomatically,1000)
+										}
+								</script>
 							</center>
 						</div>
 						<div>
 							<ul id="un-ordered-list-id">
 								<label>Customer list</label>
 							</ul>
-							<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Customer Name"  name="paint_name" />
-							<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Contacts" name="paint_name" />
-							<input id="amount-id-1"  class="order-inputs " type="date"  name="paint_name" />
-							<input id="final-total-id" class="subtotalinputs order-inputs" name="paint_name" placeholder="Final Total" type="text"/>
+							<form id="customer-info-form">
+								<input  class="order-inputs" type="text" placeholder="Customer Name"  name="paint_name" />
+								<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Contacts" name="paint_name" />
+								<input id="amount-id-1"  class="order-inputs " type="date"  name="paint_name" />
+								<input id="final-total-id" class="subtotalinputs order-inputs" name="paint_name" placeholder="Final Total" type="text"/>
+							</form>
 						</div>
 						<button  id="total-btn" >Total</button>
 						<button onclick="CreateArray ()" >creat</button>

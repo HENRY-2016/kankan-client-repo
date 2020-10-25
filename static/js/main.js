@@ -11,7 +11,7 @@ function Load_Subdealer_Login () {window.location="subdlogin.html"}
 function LoadMakeOrderGui () { window.location="subdmakepaintorder.html"}
 function LoadCustomerGui () {window.location="subdcustomer.html"}
 function Load_developer () {window.location="developer.html"}
-
+function Load_Subdealer_Log_In () {window.location="subdlogin.html"}
 
 // Plascon Types Navigetion Subs
 function Load_Plascon_Gloss_View (){window.location="PlasconGloss.html"}

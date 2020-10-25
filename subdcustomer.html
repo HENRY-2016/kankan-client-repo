@@ -1,340 +1,241 @@
 
-<html>
-	<head>
-	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-	<title>kan kan | User</title>
-	<script src="static/js/jquery.min.js"> </script>
-	<script src="static/js/requests.js" >  </script>
-	<script src="static/js/main.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="static/css/main.css">
-	<link rel="stylesheet" type="text/css" href="static/css/w3.css" >
-	</head>
-	
-	<body class="main_body" onload="HideAllRootDivs ()">
+
+
+<html>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>View | Sub dealer </title>
+<script src="static/js/jquery.min.js"> </script>
+<script src="static/js/main.js"></script>
+<script src="static/js/bookings.js" ></script>
+<script src="static/js/products.js" ></script>
+
+<script>
+function LoadNamesColoursAndPricesFromServer ()
+{
+	// @ comment :: this fetchs server resources through end point
+	GetProductsNames("plascon_product_names_endpoint")
+	GetProductsPrices("plascon_product_prices_endpoint")
+	GetPaintColours ("paint_colours_endpoint")
+
+}
+function SetUpColourNames () {ShowPaintColoursOptions("colour-input-id")	}
+function SetupAutocompleteTypes () {autocomplete(document.getElementById("type-input-id"), products_names)}
+
+function Onoline_Fatch_User_Online_Data ()
+{
+	// Add_Product_Gallery_Iframe ("plascon_emulsion_products_endpoint");
+	// Load_Movie_Names ("movie-name","a_names_endpoint");
+
+	// @ comment :: set up timing..
+	setTimeout( LoadNamesColoursAndPricesFromServer , 1000)
+	setTimeout(SetUpColourNames,2000)
+	setTimeout(SetupAutocompleteTypes,3000)
+}
+
+function StartBackGroundCalculation ()
+{if ($(window).focus()) {setInterval(CalculateSubtotalAutomatically,1000); setInterval(CalculateGrandtotalAutomatically,1000)};}
+
+function StopBackGroundCalculation ()
+	{
+		if (window.history.back()) 
+			{
+				clearInterval(CalculateSubtotalAutomatically); 
+				clearInterval(CalculateGrandtotalAutomatically)};
+				document.getElementById("customer-info-form").reset();
+				console.log("focus lost.... ")
+			}
+
+function Check_Network_Status ()
+{
+	Onoline_Fatch_User_Online_Data ()
+	// if (!navigator.onLine) {Create_Offline_Label ();}
+	// else if (navigator.onLine) 
+	// 	{
+	// 		Add_Movies_Gallery_Iframe ("plascon_products_endpoint");
+	// 		Load_Movie_Names ("movie-name","a_names_endpoint");
+	// 	}
+
+	// start calculations
+	StartBackGroundCalculation ()
+	// StopBackGroundCalculation ()
+}
+
+</script>
+<link rel="stylesheet" type="text/css" href="static/css/main.css">
+<link rel="stylesheet" type="text/css" href="static/css/w3.css" >
+</head>
+
+<body class="main_body" onload="Check_Network_Status ()" ononline="Onoline_Fatch_User_Online_Data ()">
 	<div id="main-header">
-			<div  id= "Navigetion" class="header">
-					<!-- ======= CLOSE ====== -->
-				<span href="javascript:void(0)" class="closebtn" onclick="closeNavi()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
-				<div id="our-avenues-menu-label-div">
-					<label class="our-avenues-label" onclick="Load_index ()" > Home</label>
-				</div><br>
-					
-					<div id="menu-items-div">
-							<div id="our-avenues-menu-label-div">
-									<label class="our-avenues-label" > Our Products</label>
-								</div><br>
-						<center>
-							<a><label onclick="Load_Rak_View ()">Rak</label></a>
-							<a><label onclick="Load_Paint_View ()">Paint</label></a>
-							<a><label onclick="Load_Chint_View ()">Chint</label></a>
-							<a><label onclick="Load_Mapei_View ()">Mapei</label></a>
-							<a><label onclick="Load_Donald_View ()">Donald</label></a>
-							<a><label onclick="Load_Panasonic_View ()">Panasonic</label></a>
-						</center>
-					</div>
-					<br>
-					<div id="our-avenues-menu-label-div">
-						<label class="our-avenues-label" onclick="Load_Subdealer_Login ()" > Sub Dealer</label>
-					</div><br>
-					
-					<div id="our-avenues-menu-label-div">
-						<label class="our-avenues-label" onclick="Load_Subdealer_Login ()" > Sub Dealer</label>
-					</div><br>
-					<div id="our-avenues-menu-label-div">
-						<label class="our-avenues-label" onclick="Load_developer ()" > Developer</label>
-					</div><br>
+		<div  id= "Navigetion" class=" w3-light-grey header">
+			<!-- ======= CLOSE ====== -->
+		<span href="javascript:void(0)" class="closebtn" onclick="CloseNavigetion()"><label class="close-navi-span"> &times;</label></span><!-- closs the navi -->
+	
+	<div id="navigetion-links-div">
+		<label class="our-products-label" > Our Products</label>
+		<div id="Drop-Down-Id">
+			<a onclick="OpenDropDown ('Plascon-Types-Id')" >Plascon</a>
+			<div id="Plascon-Types-Id" class="Drop-Down-Content w3-white w3-card-4">
+				<label onclick="Load_Plascon_Pack_View ()" class="drop-down-content-label" >Pack</label>
+				<label onclick="Load_Plascon_Gloss_View ()" class="drop-down-content-label">Gloss</label>
+				<label  onclick="Load_Plascon_Sundry_View ()" class="drop-down-content-label" >Sundry </label>
+				<label onclick="Load_Plascon_Varnish_View ()"class="drop-down-content-label" >Varnish</label>
+				<label onclick="Load_Plascon_Primers_View ()" class="drop-down-content-label" >Primers</label>
+				<label onclick="Load_Plascon_Emulsion_View ()" class="drop-down-content-label">Emulsion</label>
+				<label onclick="Load_Plascon_Thinners_View ()" class="drop-down-content-label" >Thinners</label>
+				<label onclick="Load_Plascon_Undercoat_View ()" class="drop-down-content-label" >Undercoat</label>
+				<label onclick="Load_Plascon_Aluminium_View ()" class="drop-down-content-label" >Aluminium</label>
+				<!-- <label onclick="Load_Plascon_Industrial_View ()" class="drop-down-content-label" >Industrial</label> -->
+				<label onclick="Load_Plascon_Roof_Floor_View ()" class="drop-down-content-label" >Roof & Floor</label>
+				<label onclick="Load_Plascon_Roadmarking_View ()" class="drop-down-content-label" >Roadmarking</label>
+				<label onclick="Load_Plascon_waterproofing_View ()" class="drop-down-content-label" > Water proofing</label>
+				<label onclick="Load_Plascon_Architectural_finishes_View ()" class="drop-down-content-label" >Architectural  finishes</label>
 			</div>
-			<div id="NaviDivHeader">
-				<label class="kone-menu-label" onclick="openMenus()">&#9776;</label>
-				<label class="kone-label">Kan Kan builders</label>
+	
+			<a onclick="OpenDropDown ('Plumbing-Id')" >Plumbing</a>
+			<div id="Plumbing-Id" class="Drop-Down-Content w3-white w3-card-4">
+				<label class="content-sub-title-labels" >Fittings</label>
+				<!--
+				<label class="drop-down-content-label">GI </label>
+				<label class="drop-down-content-label">PE </label>
+				<label class="drop-down-content-label">PPR </label>
+				<label class="drop-down-content-label">PVC </label> 
+				-->
+				<!-- <label class="content-sub-title-labels" >Ceremics</label> -->
+					<!-- <label onclick="Load_Donald_View ()" class="drop-down-content-label">Toilets</label> -->
+					<label class="drop-down-content-label">Kitchen </label>
+					<label class="drop-down-content-label">Bathroom</label>
+	
 			</div>
+	
+			<a onclick="OpenDropDown ('Electricals-Id')" >Electricals</a>
+			<div id="Electricals-Id" class="Drop-Down-Content w3-white w3-card-4">
+				<label class="drop-down-content-label">Chint</label>
+				<label  class="drop-down-content-label">Panasonic</label>
+				<!-- 
+					onclick="Load_Chint_View()"
+					onclick="Load_Panasonic_View ()"
+					-->
+			</div>
+	
+			<a onclick="OpenDropDown ('Floor-Walls-Id')" > Floor Products </a>
+			<div id="Floor-Walls-Id" class="Drop-Down-Content w3-white w3-card-4">
+					<label class="content-sub-title-labels" >Italian Floors</label>
+						<!-- <label class="drop-down-content-label">Glamora</label> -->
+					<!-- <label class="content-sub-title-labels" >Floor</label> -->
+						<label class="drop-down-content-label">Veluti Veneti</label>
+					<label class="content-sub-title-labels" >Tiles</label>
+						<label class="drop-down-content-label">Twyford</label>
+						<label class="drop-down-content-label">Goodwill</label>
+			</div>
+			<a onclick="OpenDropDown ('Water-Proofing-Id')" >Water Proofing</a>
+			<div id="Water-Proofing-Id" class="Drop-Down-Content w3-white w3-card-4">
+				<label class="drop-down-content-label">Mapei</label>
+				<!-- <label class="drop-down-content-label">Dr. Fix it</label> -->
+				<!-- <label class="drop-down-content-label">Plascon</label> -->
+				<!-- <label class="drop-down-content-label">Sadolin</label> -->
+			</div>
+	
+			<!-- <a onclick="OpenDropDown ('Building-Materials-Id')" >Building Materials</a>
+			<div id="Building-Materials-Id" class="Drop-Down-Content w3-white w3-card-4">
+				<label class="drop-down-content-label">Major</label>
+				<label class="drop-down-content-label">Minor</label>
+				<label class="drop-down-content-label" >Others</label>
+			</div> -->
+			
+		</div>
+		<label onclick="Load_Subdealer_Log_In ()" class="drop-down-content-label" >Subdealer</label>
+
+		
+	</div>
+	
+	</div>
+	<div id="NaviDivHeader">
+		<label class="open-navigation-label" onclick="OpenNavigetion()">&#9776;</label>
+		<!-- <label class="title-label">Sub Dealer</label> -->
+	</div>
 	<script>
-	function openMenus(){document.getElementById("Navigetion").style.width = "240px"}
-	function closeNavi (){document.getElementById("Navigetion").style.width = "0"}
+	function OpenNavigetion(){document.getElementById("Navigetion").style.width = "250px"}
+	function CloseNavigetion (){document.getElementById("Navigetion").style.width = "0"}
+	function OpenDropDown (DropDownId)
+	{
+	document.getElementById(DropDownId).classList.toggle("w3-show");
+	document.getElementById(DropDownId).previousElementSibling.classList.toggle("w3-show");
+	}
 	</script>
 	
-	</div> <!-- main-header-->
-	<div id="main-body" > <!-- Begin main-body div -->
-	
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<br><br>
-		<center>
-		<label class="home_page_fonts" > Name :: </label> <br>
-		<label class="home_page_fonts" > Open Blance :: </label>
+	</div> <!-- main-header-->    
 		
-		<br><br>
-		<button id="payments-btn" class="menu_btns fontstyles" > Payments </button>
-		<div id="payments-div"><br>
-			<button id="details-child-btn" class="admin-btn fontstyles" >Details</button>
-				<div id="details-child-div"><br>
-					<button id="details-view-all-btn" class="grand-child-btn fontstyles">All</button><br><br>
-						<div id="details-view-all-div">
-							<button onclick="PaymentsView ('payments_view_details','payment-show-all-tbody','details-view-all-div')" class="show-btn  entries_page_fonts"  >Show</button>
-								<div id="details-view-all-div">
-									<center>
-										<table class=" w3-bordered user-scrolling-table">
-											<tbody id="payment-show-all-tbody"></tbody>
-										</table>
-									</center>
-								</div>
-						</div>
-
-					<button id="payments-view-from-to-btn" class="grand-child-btn fontstyles">From To </button><br><br>
-					<div id="payments-view-from-to-div" >
-					</div>
-				</div>
-		<!-- 
-			========================================================================================
-			========================================================================================			
-		-->
-			<br><br>
-			<button id="reference-child-btn" class="admin-btn fontstyles" >References</button>
-				<div id="reference-child-div">
-						<center><br>
-						<p>with pics and iframe to be used</p>
-						</center>
-				</div>
-		<!-- 
-			========================================================================================
-			========================================================================================			
-		-->
-			<br><br>
-			<button id="deposit-child-btn" class="admin-btn fontstyles" >Deposit</button>
-				<div id="deposit-child-div">
-					<br>
-						<form class="order-form" action="http://127.0.0.1:4444/customerdeposit" method="POST" id="chips-assign-form">
-							<label for="uname"><b>Date</b></label><br>
-							<input type="date" placeholder="payment date" name="date" class="form_inputs" autocomplete="off" required>
-
-							<label for="uname"><b>Amount</b></label><br>
-							<input type="text" placeholder="amount" name="amount" class="form_inputs" autocomplete="off" required>
-
-
-							<label for="uname"><b>Method</b></label><br>
-							<select placeholder="method used" name="method" class="form_inputs" autocomplete="off" required>
-								<option value="Cash" >Cash</option>
-								<option value="Cheque" >Cheque</option>
-								<option value="Bank" >Bank</option>
-							</select>
-
-
-							<label for="uname"><b>Deposit To</b></label><br>
-								<select placeholder="method used" name="deposit_to" class="form_inputs" autocomplete="off" required>
-									<option value="Sales Man" >Sales Man</option>
-									<option value="DFCU" >DFC</option>
-									<option value="Centanry" >Centanry</option>
-								</select>
-
-							<label for="uname"><b>Screen Shoot</b></label><br>
-							<input type="file" name="file"><br>
-							<label for="uname">Attach picture</label><br>
-
-							<label for="uname"><b>Name</b></label><br>
-							<input type="text" placeholder="sub dealer name" name="subdealername" class="form_inputs" autocomplete="off" required>
-
-							<label for="uname"><b>Password</b></label><br>
-							<input type="text" placeholder="sub dealer pin" name="subdealerpin" class="form_inputs" autocomplete="off" required>
-
-
-
-							<button type="submit" class="submit-btn" > Submit</button><br><br>
-						</form><br>
-				</div>
-	</div>
-	
-	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<br><br>
-		<center>
-		<button id="orders-btn" class="menu_btns fontstyles" > Orders </button>
-		<div id="orders-div"><br>
-			<button id="orders-prices-btn" class="admin-btn fontstyles" >Prices</button>
-				<div id="orders-prices-div">
-						<center><br>
-						<p>===============</p>
-						</center>
-				</div>
-		<!-- 
-			========================================================================================
-			========================================================================================			
-		-->
-			<br><br>
-			<button id="orders-received-btn" class="admin-btn fontstyles" >Recieved</button>
-				<div id="orders-received-div">
-					<center><br>
-						<!-- <div class="w3-container">
-							<div class="w3-panel w3-light-grey w3-bottombar w3-border-blue w3-border" >
-								<p>Demo DemoDemoDemoDemo</p>
-							</div>
-						</div> -->
-						<button onclick="LoadCustomerInvoices ()">Show</button>
-						<div class="w3-container">
-								<div class="w3-panel w3-light-grey w3-bottombar w3-border-blue w3-border" >
-									<!-- <div id="order-received-display-area"></div> -->
-									<!-- <p id="order-received-display-area"></p> -->
-									<button onclick="FetchOrdersByInfo ('view_all_invoices_info','orders-recieved-tbody','orders-received-div')" class="show-btn  entries_page_fonts"  >Show</button>
-										<div id="orders-reciceved-div">
-											<center>
-												<table class=" w3-bordered user-scrolling-table">
-													<tbody id="orders-recieved-tbody"></tbody>
-												</table>
-												
-												<form class="sadolin_from_to_form" id="number-form" >
-													<label>Number</label>
-													<input class="sadolin_view_form_input" type="text" name="ordernumber" onchange="FetchOrdersByData ('view_all_invoices_data','number-tbody','number-form')" ><br>
-													
-												</form>
-												<button class="agency-show-btn entries_page_fonts"  ></button>
-												<div id="number-div" >
-													<table class=" w3-bordered user-scrolling-table">
-														<tbody id="number-tbody"></tbody>
-													</table>
-												</div>
-											</center>
-
-										</div>
-								</div>
-							</div>
-							<div ></div>
-					</center>
-				</div>
-		<!-- 
-			========================================================================================
-			========================================================================================			
-		-->
-		<br><br>
-		<button id="orders-pending-btn" class="admin-btn fontstyles" >Pending</button>
-			<div id="orders-pending-div">
-				<center><br>
-					<div class="w3-cell-row" style="width:75%">
-						<div class="w3-container w3-red w3-cell" >
-							<p>Name</p>
-						</div>
-
-						<div class="w3-container w3-green w3-cell" >
-							<p>Price</p>
-						</div>
-					</div>
-				</center>
-			</div>
-		
-		<!-- 
-			========================================================================================
-			========================================================================================			
-		-->
-		<br><br>
-		<button class="admin-btn fontstyles" onclick="LoadMakeOrderGui ()" >Make Order</button>
-	</div>
-
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<br><br>
-		<center>
-		<button id="summary-btn" class="menu_btns fontstyles" > Summary </button>
-		<div id="summary-div"><br>
-			<button id="summary-orders-btn" class="admin-btn fontstyles" >Orders</button>
-				<div id="summary-orders-div">
-					<center><br>
-					<p>===============</p>
-					</center>
-				</div>
-				<!-- 
-					========================================================================================
-					========================================================================================			
-				-->
-				<br><br>
-				<button id="summary-payments-btn" class="admin-btn fontstyles" >Payments</button>
-					<div id="summary-payments-div">
-						<center><br>
-						<p>===============</p>
-						</center>
-					</div>
-				<!-- 
-					========================================================================================
-					========================================================================================			
-				-->
-				<br><br>
-				<button id="summary-statements-btn" class="admin-btn fontstyles" >Statements</button>
-					<div id="summary-statements-div">
-						<center><br>
-							<p>Date : Transtion : Amount : Balance</p>
-							<p>Show payments and Invoices</p>
-						</center>
-						<button id="summary-view-all-btn" class="grand-child-btn fontstyles">All</button><br><br>
-						<div id="summary-view-all-div">
-							<button onclick="PaymentsView ('payments_view_details','payment-show-all-tbody','details-view-all-div')" class="show-btn  entries_page_fonts"  >Show</button>
-								<div id="details-view-all-div">
-									<center>
-										<table class=" w3-bordered user-scrolling-table">
-											<tbody id="payment-show-all-tbody"></tbody>
-										</table>
-									</center>
-								</div>
-						</div>
-
-					<button id="summary-view-from-to-btn" class="grand-child-btn fontstyles">From To </button><br><br>
-					<div id="summary-view-from-to-div" >
-					</div>
-					</div>
-				<!-- 
-					========================================================================================
-					========================================================================================			
-				-->
-			</div>
-	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	<br><br>
+<div id="main-body" > <!-- Begin main-body div -->
 	<center>
-	<button class="back-btn" onclick="javascript:history.go(-1)"><< Back</button><br><br>
+	<br>
+	<label class="paint-types-label" >Sub Dealer</label>
+	<center>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+		<button class="main-acordination-btns">Order </button>
+		<div class="acordination-contents-area"><br>
+			<div class="order-input-div">
+				<form autocomplete="off" id="products-form">
+					<label class="input-discription-labels">product type</label><br>
+					<div class="autocomplete">
+						<input id="type-input-id" type="text" name="paint_name" placeholder="Type first letter" class="paint-name order-inputs">
+					</div><br>
+					<label class="input-discription-labels">select size</label>
+					<select id="size-input-id" onchange="DisplayCostPrice ('type-input-id','size-input-id','cost-price-id')" name="paint_name" id="size-id" placeholder="Size" class="paint-name order-inputs">
+						<option></option>
+						<option value="1ltr" >1 ltr</option>
+						<option value="4ltrs" >4 ltrs</option>
+						<option value="20ltrs" >20 ltrs</option>
+					</select>
+					<label class="input-discription-labels">colour name</label>
+					<select id="colour-input-id" placeholder="Colour" class="paint-name order-inputs"><option></option></select>
+					<input  id="qty-input-id" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
+					<input id="cost-price-id"  readonly class="order-inputs" type="text"  name="paint_name" placeholder="Cost" />
+					<input id="total-input-id" readonly class="subtotalinputs order-inputs" name="paint_name" placeholder="Total" type="text"/>
+				</form>
+				<button onclick="CreatCustomerList('type-input-id','size-input-id','colour-input-id','qty-input-id','cost-price-id','total-input-id','un-ordered-list-id')" class="add-btn-order-modal">Add</button>
+				<div>
+					<ul id="un-ordered-list-id">
+						<label>Customer list</label>
+					</ul>
+				</div>
+				<form id="customer-info-form">
+					<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Customer Name"  name="paint_name" />
+					<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Contacts" name="paint_name" />
+					<input id="amount-id-1"  class="order-inputs " type="date"  name="paint_name" />
+					<input id="final-total-id" class="subtotalinputs order-inputs" name="paint_name" placeholder="Final Total" type="text"/>
+				</form>
+				<button onclick="CreateArray ()" >creat</button>
+			</div>
+	</div>
 	</center>
-	</div>
-	<div id="NaviDivFooter">
-		<center>
-			<label class="kone-label">Construction Supply</label>
-		</center>
-	</div>
+</div>
+
+
+
+
+
+
+
+
 <script>
-	var acc = document.getElementsByClassName("interest-description-btns");
-	var i;
 
-	for (i = 0; i < acc.length; i++) {
-		acc[i].onclick = function() {
-		this.classList.toggle("active");
-		var panel = this.nextElementSibling;
-		if (panel.style.maxHeight){
-			panel.style.maxHeight = null;
-		} else {
-			panel.style.maxHeight = panel.scrollHeight + "px";
-		}
-		}
+var acc = document.getElementsByClassName("main-acordination-btns");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+	acc[i].onclick = function() {
+	this.classList.toggle("active");
+	var panel = this.nextElementSibling;
+	if (panel.style.maxHeight){
+		panel.style.maxHeight = null;
+	} else {
+		panel.style.maxHeight = panel.scrollHeight + "px";
 	}
+	}
+}
 </script>
-
-	</body>
-	</html>
-	
+</body>
+</html>
