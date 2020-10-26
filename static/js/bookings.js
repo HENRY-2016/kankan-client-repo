@@ -1,7 +1,7 @@
 
-// var url = "http://127.0.0.1:4444/";
-// var url = "http://192.168.43.140:4444/"; 
-var url = "http://192.168.43.23:4444/" // laptop
+// var bookings_url = "http://127.0.0.1:4444/";
+// var bookings_url = "http://192.168.43.140:4444/"; 
+var bookings_url = "http://192.168.43.23:4444/" // laptop
 
 
 
@@ -18,7 +18,7 @@ function GetProductsNames ( urlendpoint)
                     products_names = JSON.parse(namesrequest.responseText)
                 }
         }
-    namesrequest.open("GET", url + urlendpoint );    
+    namesrequest.open("GET", bookings_url + urlendpoint );    
     namesrequest.send();
 }
 
@@ -32,7 +32,7 @@ function GetPaintColours ( urlendpoint)
                     paint_colours = JSON.parse(coloursrequest.responseText)
                 }
         }
-    coloursrequest.open("GET", url + urlendpoint );    
+    coloursrequest.open("GET", bookings_url + urlendpoint );    
     coloursrequest.send();
 }
 
@@ -47,7 +47,7 @@ function GetProductsPrices ( urlendpoint)
                     // console.log(products_prices)
                 }
         }
-    pricesrequest.open("GET", url + urlendpoint );    
+    pricesrequest.open("GET", bookings_url + urlendpoint );    
     pricesrequest.send();
 }
 

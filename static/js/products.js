@@ -1,7 +1,7 @@
 
-// var src_url = "http://127.0.0.1:4444/"
-// var src_url = "http://192.168.43.140:4444/"
-var src_url = "http://192.168.43.23:4444/" // laptop
+// var products_url = "http://127.0.0.1:4444/"
+// var products_url = "http://192.168.43.140:4444/"
+var products_url = "http://192.168.43.23:4444/" // laptop
 // Product Gallery
 function Add_Product_Gallery_Iframe (endpoint)
 {
@@ -9,7 +9,7 @@ function Add_Product_Gallery_Iframe (endpoint)
     let ProductsGalleryDiv = document.getElementById("product-pics-div");
     let ProductsIframe = document.createElement("iframe");
     ProductsIframe.className = "products-iframe";
-    ProductsIframe.setAttribute("src",  src_url + endpoint);
+    ProductsIframe.setAttribute("src",  products_url + endpoint);
     ProductsGalleryDiv.appendChild(ProductsIframe);
 }
 
@@ -19,7 +19,7 @@ function Add_Products_Gallery_Iframe_With_Args (offline_label,menu_divid,endpoin
     let ProductsGalleryDiv = document.getElementById(menu_divid);
     let ProductsIframe = document.createElement("iframe");
     ProductsIframe.className = "products-iframe";
-    ProductsIframe.setAttribute("src",  src_url + endpoint);
+    ProductsIframe.setAttribute("src",  products_url + endpoint);
     ProductsGalleryDiv.appendChild(ProductsIframe);
 }
 
