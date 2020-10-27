@@ -7,13 +7,19 @@ function Load_Chint_View () {window.location="guichint.html"}
 function Load_Mapei_View () {window.location="guimapei.html"}
 function Load_Donald_View () {window.location="guidonald.html"}
 function Load_Panasonic_View () {window.location="guipanasonic.html"}
-function Load_Subdealer_Login () {window.location="subdlogin.html"}
 function LoadMakeOrderGui () { window.location="subdmakepaintorder.html"}
-function LoadCustomerGui () {window.location="subdcustomer.html"}
+function LoadSubdealerGui () {window.location="subdealer.html"}
+function LoadPainterGui () {window.location="painter.html"}
 function Load_developer () {window.location="developer.html"}
-function Load_Subdealer_Log_In () {window.location="subdlogin.html"}
+
+function Load_Subdealer_Login () {window.location="subdlogin.html"}
+function Load_Painter_Login () {window.location="painterlogin.html"}
+
 
 // Plascon Types Navigetion Subs
+function Load_Plascon_MakeOrder_Gui () {window.location="makeorder.html"}
+function Load_Plascon_Painter_Log_In () {window.location="painter.html"}
+
 function Load_Plascon_Gloss_View (){window.location="PlasconGloss.html"}
 function Load_Plascon_Pack_View (){window.location="PlasconPack.html"}
 function Load_Plascon_Sundry_View (){window.location="PlasconSundry.html"}

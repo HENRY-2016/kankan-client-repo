@@ -304,6 +304,8 @@ ul li.checked::before {
 {
     color: blue;
     /* float: left; */
+    margin-left: 3%;
+    margin-right: 3%;
 }
 .add-btn-order-modal
 {
@@ -418,8 +420,13 @@ a:hover{background-color:#E6E6FA;}
 .close-navi-span
 {
  font-size: 20px;
- text-align: center;
+ color: white;
+ width: 20%;
+ height: 50px;
+ cursor: pointer;
+ padding: 12px 12px 12px 12px;
 }
+
 #navigetion-links-div
 {
     text-align: center;
@@ -428,7 +435,7 @@ a:hover{background-color:#E6E6FA;}
 #NaviDivHeader
     {
         background-color: #A9A9A9;
-        height:8%;
+        height:50px;
     }
 /* #NaviDivFooter
 {
@@ -446,10 +453,9 @@ a:hover{background-color:#E6E6FA;}
 
 .open-navigation-label
 {
-    font-size:50px;
-    margin-top: -120px;
+    font-size:35px;
     cursor:pointer;
-    /* color:#00008B; */
+    margin-left: 8px;
     color: white;
 }
 .title-label
@@ -604,21 +610,6 @@ a:hover{background-color:#E6E6FA;}
 border-bottom: 2px solid black;
 }
 
-#inner-clear-submite-div
-{
-    /* width: 50%; */
-    background-color: inherit;
-}
-
-/* .sadolin-form-title-labels
-
-{
-    font-family: Georgia, "Times New Roman", Times, serif; 	
-    font-size: 18px; 
-    color: blue;
-    font-style: iterlic;
-    font-weight:bold;
-} */
 .submite-btn 
 {
     /* float: right; */

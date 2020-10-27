@@ -16,6 +16,7 @@ function GetProductsNames ( urlendpoint)
             if ( namesrequest.readyState == 4 && namesrequest.status == 200)
                 {
                     products_names = JSON.parse(namesrequest.responseText)
+                    console.log(products_names)
                 }
         }
     namesrequest.open("GET", bookings_url + urlendpoint );    

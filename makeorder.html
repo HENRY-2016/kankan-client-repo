@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-<title>View | Sub dealer </title>
+<title>Customer |  Make Order </title>
 <script src="static/js/jquery.min.js"> </script>
 <script src="static/js/main.js"></script>
 <script src="static/js/bookings.js" ></script>
@@ -144,11 +144,12 @@ function Check_Network_Status ()
 				<label class="drop-down-content-label">Minor</label>
 				<label class="drop-down-content-label" >Others</label>
 			</div> -->
+			<label class="our-products-label" > Others</label>
+
+			<a onclick="Load_Subdealer_Login ()" class="drop-down-content-label" >Sub dealer</a>
+			<a onclick="Load_Painter_Login ()" class="drop-down-content-label" >Painters</a>
 			
 		</div>
-		<label onclick="Load_Subdealer_Log_In ()" class="drop-down-content-label" >Subdealer</label>
-
-		
 	</div>
 	
 	</div>
@@ -170,92 +171,64 @@ function Check_Network_Status ()
 		
 <div id="main-body" > <!-- Begin main-body div -->
 	<br>
-	<label class="paint-types-label" >Sub Dealer</label>
-	<center>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<button class="main-acordination-btns">Prices </button>
+		<!-- <button class="main-acordination-btns">Prices </button>
 		<div class="acordination-contents-area"><br>
 			<p>vv</p>
-		</div>
+		</div> -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<button class="main-acordination-btns">Received Orders </button>
+		<!-- <button class="main-acordination-btns">Mapei Orders </button>
 		<div class="acordination-contents-area"><br>
-			<button id="details-view-all-btn" class="grand-child-btn fontstyles">All</button><br><br>
-				<div id="orders-view-all-div">
-					<button onclick="PaymentsView ('payments_view_details','payment-show-all-tbody','orders-view-all-div')" class="show-btn  entries_page_fonts"  >Show</button>
-						<div id="orders-view-all-div">
-							<center>
-								<table class=" w3-bordered user-scrolling-table">
-									<tbody id="payment-show-all-tbody"></tbody>
-								</table>
-							</center>
-						</div>
-				</div>
-
-			<button id="payments-view-from-to-btn" class="grand-child-btn fontstyles">From To </button><br><br>
-			<div id="payments-view-from-to-div" >
-				<div id="orders-view-all-div">
-					<center>
-						<table class=" w3-bordered user-scrolling-table">
-							<tbody id="payment-show-all-tbody"></tbody>
-						</table>
-					</center>
-				</div>
-			</div>
-		</div>
+			<p>mapei</p>
+		</div> -->
 		
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-		<button class="main-acordination-btns">New Order </button>
+		<button class="main-acordination-btns">Plascon Order </button>
 		<div class="acordination-contents-area"><br>
 			<div class="order-input-div">
-				<form autocomplete="off" id="products-form">
-					<label class="input-discription-labels">product type</label><br>
-					<div class="autocomplete">
-						<input id="type-input-id" type="text" name="paint_name" placeholder="Type first letter" class="paint-name order-inputs">
-					</div><br>
-					<label class="input-discription-labels">select size</label>
-					<select id="size-input-id" onchange="DisplayCostPrice ('type-input-id','size-input-id','cost-price-id')" name="paint_name" id="size-id" placeholder="Size" class="paint-name order-inputs">
-						<option></option>
-						<option value="1ltr" >1 ltr</option>
-						<option value="4ltrs" >4 ltrs</option>
-						<option value="20ltrs" >20 ltrs</option>
-					</select>
-					<label class="input-discription-labels">colour name</label>
-					<select id="colour-input-id" placeholder="Colour" class="paint-name order-inputs"><option></option></select>
-					<input  id="qty-input-id" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
-					<input id="cost-price-id"  readonly class="order-inputs" type="text"  name="paint_name" placeholder="Cost" />
-					<input id="total-input-id" readonly class="subtotalinputs order-inputs" name="paint_name" placeholder="Total" type="text"/>
-				</form>
-				<button onclick="CreatCustomerList('type-input-id','size-input-id','colour-input-id','qty-input-id','cost-price-id','total-input-id','un-ordered-list-id')" class="add-btn-order-modal">Add</button>
-				<div>
-					<ul id="un-ordered-list-id">
-						<label>Customer list</label>
-					</ul>
-				</div>
-				<form id="customer-info-form">
-					<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Customer Name"  name="paint_name" />
-					<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Contacts" name="paint_name" />
-					<input id="amount-id-1"  class="order-inputs " type="date"  name="paint_name" />
-					<input id="final-total-id" class="subtotalinputs order-inputs" name="paint_name" placeholder="Final Total" type="text"/>
-				</form>
-				<button onclick="CreateArray ()" >creat</button>
-			</div>
+				<center>
+					<form autocomplete="off" id="products-form">
+						<label class="input-discription-labels">product type</label><br>
+						<div class="autocomplete">
+							<input id="type-input-id" type="text" name="paint_name" placeholder="Type first letter" class="paint-name order-inputs">
+						</div><br>
+						<label class="input-discription-labels">select size</label>
+						<select id="size-input-id" onchange="DisplayCostPrice ('type-input-id','size-input-id','cost-price-id')" name="paint_name" id="size-id" placeholder="Size" class="paint-name order-inputs">
+							<option></option>
+							<option value="1ltr" >1 ltr</option>
+							<option value="4ltrs" >4 ltrs</option>
+							<option value="20ltrs" >20 ltrs</option>
+						</select>
+						<label class="input-discription-labels">colour name</label>
+						<select id="colour-input-id" placeholder="Colour" class="paint-name order-inputs"><option></option></select>
+						<input  id="qty-input-id" class="order-inputs" type="text" placeholder="Quantity"  name="paint_name" />
+						<input id="cost-price-id"  readonly class="order-inputs" type="text"  name="paint_name" placeholder="Cost" />
+						<input id="total-input-id" readonly class="subtotalinputs order-inputs" name="paint_name" placeholder="Total" type="text"/>
+					</form>
+					<button onclick="CreatCustomerList('type-input-id','size-input-id','colour-input-id','qty-input-id','cost-price-id','total-input-id','un-ordered-list-id')" class="add-btn-order-modal">Add</button>
+				</center>
+				<center><label>Customer list</label></center>
+					<ul id="un-ordered-list-id"></ul>
+				<center>
+					<form id="customer-info-form">
+						<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Customer Name"  name="paint_name" />
+						<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Contacts" name="paint_name" />
+						<input id="amount-id-1"  class="order-inputs " type="date"  name="paint_name" />
+						<input id="final-total-id" class="subtotalinputs order-inputs" name="paint_name" placeholder="Final Total" type="text"/>
+					</form>
+					<button onclick="CreateArray ()" >creat</button>
+				</center><br><br>
 		</div>
-		
-	</center>
 </div>
-
-
-
 
 
 
