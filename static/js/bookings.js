@@ -16,7 +16,6 @@ function GetProductsNames ( urlendpoint)
             if ( namesrequest.readyState == 4 && namesrequest.status == 200)
                 {
                     products_names = JSON.parse(namesrequest.responseText)
-                    console.log(products_names)
                 }
         }
     namesrequest.open("GET", bookings_url + urlendpoint );    
@@ -118,29 +117,6 @@ function DisplayCostPrice (type_id,size_id,cost_input_id)
     else {alert("... Invalid input ...");}
 }
 
-// function CalculateSubTotaPrice (qty_id, cost_price_id, subtotal_id)
-// {
-//     let type_input_id = document.getElementById("type-input-id").value;
-//     let size_input_id = document.getElementById("size-input-id").value;
-//     let colour_input_id  = document.getElementById("colour-input-id").value;
-
-//     let qty_input = document.getElementById(qty_id).value;
-//     let cost_price = document.getElementById(cost_price_id).value;
-    
-//     if (type_input_id == "" || size_input_id == "" || colour_input_id =="" )
-//         {
-//             alert("Please select Type,Size and Colour Fisrt")
-//         }
-//     else
-//         {
-//             qty_input.isInteger()    
-//             let price = parseFloat(qty_input) * parseFloat(cost_price);    
-//             let formatedprice = price.toLocaleString();
-//             document.getElementById(subtotal_id).value =  formatedprice;
-            
-//         }
-// }
-
 
                 // ===================
                 // ON CUSTOMER LIST
@@ -182,6 +158,7 @@ function CreatCustomerList(typeinputid, sizeinputid,colourinputid, qtyinputid,am
     let total = document.getElementById(totalinputid).value;
     // creat a string
     let liststring = type + " " + colour + " "+size + " "+ qty + " " + amount + " " + " "+ total 
+    console.log(liststring)
     let customerlist = document.createTextNode(liststring);
     li.appendChild(customerlist);
     if (type === '' || size == '' ||colour == '' || qty === '') 
@@ -220,17 +197,20 @@ function CreatCustomerList(typeinputid, sizeinputid,colourinputid, qtyinputid,am
 
 
 // collecting data
+var customer_order_list;
 function CreateArray ()
 {
     let listarrary =[]
     $("#un-ordered-list-id li").each((id, elem) => {console.log(elem.innerText); listarrary.push(elem.innerText) });
 
 console.log(listarrary)
-console.log(listarrary.join(' ').trim())
+console.log("listarrary.join(' ').trim()")
+let stringfromarray =  listarrary.join(' ').trim()
 
-var l=  "code 132 10 4000  40000"
-var len = l.length
-l2 = "dpm-10-195000-1950000"
+customer_order_list = stringfromarray
+// var l=  "code 132 10 4000  40000"
+// var len = l.length
+// l2 = "dpm-10-195000-1950000"
 console.log("=====================")
 // console.log(l2.split("-").pop());
 // console.log(l2.substring(l2.lastIndexOf("-")+1, l2.length));
@@ -249,6 +229,46 @@ console.log("=====================")
 
 // Email :: namazzimaria2020@gmail.com
 // pas :: maria2020
+}
+
+function SubmiteData ()
+{
+    // collecting data
+    let customer_order_list;
+    let listarrary =[]
+    $("#un-ordered-list-id li").each((id, elem) => {listarrary.push(elem.innerText) });
+    let stringfromarray =  listarrary.join(' ').trim() // make a string from array
+    customer_order_list = stringfromarray
+
+
+    // process data submision
+    $.ajax({
+            data :
+                {
+                    name : $("#name").val(),
+                    contact : $("#contact").val(),
+                    total : $("#final-total-id").val(),
+                    items_list: customer_order_list
+                },
+
+                url : bookings_url + 'customer_order_post',
+                type : 'POST',
+                // dataType : 'json', // what type of data do we expect back from the server
+                encode : true
+            })
+
+    // callback function 
+    .done(function (data)
+        {
+            if(data.error)
+                {
+                    console.log("Something went wrong")
+                }
+            else {console.log("sumited well..")}
+
+        }
+    );
+            
 }
 
 
@@ -288,11 +308,12 @@ function CalculateGrandtotalAutomatically ()
                 subtotal1  = subtotal.slice(0, -1)
                 comasoutnum =  subtotal1.replace(/,/g,"")
                 subtotalint = parseInt(comasoutnum)
-                total += subtotalint
-                document.getElementById("final-total-id").value = total.toLocaleString();
+                total += subtotalint 
+                document.getElementById("final-total-id").value = total.toLocaleString()+' /=';
                 console.log(total);
             });
     }
+
 // Calculate the Grand total
 // $(document).ready ( function () 
 // {

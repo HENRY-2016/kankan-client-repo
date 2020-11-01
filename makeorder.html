@@ -15,8 +15,8 @@
 function LoadNamesColoursAndPricesFromServer ()
 {
 	// @ comment :: this fetchs server resources through end point
-	GetProductsNames("plascon_product_names_endpoint")
-	GetProductsPrices("plascon_product_prices_endpoint")
+	GetProductsNames("plascon_retail_names_endpoint")
+	GetProductsPrices("plascon_retail_prices_endpoint")
 	GetPaintColours ("paint_colours_endpoint")
 
 }
@@ -220,12 +220,42 @@ function Check_Network_Status ()
 					<ul id="un-ordered-list-id"></ul>
 				<center>
 					<form id="customer-info-form">
-						<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Customer Name"  name="paint_name" />
-						<input  id="qty-id-1" class="order-inputs" type="text" placeholder="Contacts" name="paint_name" />
-						<input id="amount-id-1"  class="order-inputs " type="date"  name="paint_name" />
+						<br>
+						<label>Customer informention</label>
+						<input  id="name" class="order-inputs" type="text" placeholder="Customer Name"  name="paint_name" />
+						<input  id="contact" class="order-inputs" type="text" placeholder="Contacts" name="paint_name" />
+						<!-- <input id="amount-id-1"  class="order-inputs " type="date"  name="paint_name" /> -->
 						<input id="final-total-id" class="subtotalinputs order-inputs" name="paint_name" placeholder="Final Total" type="text"/>
 					</form>
-					<button onclick="CreateArray ()" >creat</button>
+					<!-- <button class="next-to-payment-btn" onclick="SubmiteData ()" >creat</button> -->
+					<button class="next-to-payment-btn" onclick="document.getElementById('id01').style.display='block'" >Next</button>
+
+
+
+					
+					<div id="id01" class="w3-modal" >
+						<div class="w3-modal-content">
+							<div class="w3-container">
+								<br>
+								<script>
+									function close_popup_window (){document.getElementById('id01').style.display='none';document.getElementById("products-form").reset();}
+								</script>
+								<span onclick="close_popup_window ()" class=" close-x fontstyles">X</span>
+								<div id="order-inputs" class="header-order-modal">
+									<center>
+										<form id="products-form" >
+											<label class="process-payments-labels">Process Payment </label><br>
+											<label class="process-payments-labels" >Amount :: <span id="amountspan"> </span></label><br>
+											<label class="process-payments-labels" >Charges :: <span id="chargesspan"> </span></label><br>
+											<label class="process-payments-labels" >Total :: <span id="totalspan"> </span></label><br>
+											<input class="order-inputs" type="text" placeholder="Amount"  name="paint_name" />
+										</form>
+										<button class="next-to-payment-btn" onclick="SubmiteData ()">Pay</button>
+									</center>
+								</div>
+							</div>
+						</div>
+					</div>
 				</center><br><br>
 		</div>
 </div>
