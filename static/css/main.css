@@ -1,0 +1,43 @@
+
+
+.main_body { background-color:#808080}
+
+
+.next-to-payment-btn
+{
+    background-color:blue;
+    color: white;
+    font-weight: bold;
+    border:none;
+    width:100%;
+    height:40px;
+    border-radius:18px;
+}
+/*=======================================================================================================*/
+                                            /*
+                                               +++++++++++++++++++++++++ ++
+                                               +                          +
+                                               +   NAVIGETION            +
+                                               +                          +
+                                               ++++++++++++++++++++++++++++
+                                               */
+
+
+#navigetion-links-div
+{
+    text-align: center;
+}
+
+#NaviDivHeader
+    {
+        background-color: #A9A9A9;
+        height:50px;
+    }
+
+.open-navigation-label
+    {
+        font-size:35px;
+        cursor:pointer;
+        margin-left: 8px;
+        color: white;
+    }
