@@ -10,4 +10,13 @@ function LoadUsingLapTop ()
 function LoadUsingRaspberry ()
 {window.location="http://192.168.43.140:80/kankan-client-server-repo/index.html"}
 
-// https://henry-2016.github.io/kankan-admin-server-repo/. 
+
+// Esther
+function LoadEstherUsingGitHub ()
+{window.location='https://henry-2016.github.io/esther-client-server-repo/'}
+
+function LoadEstherUsingLapTop ()
+{window.location="http://192.168.43.23:80/esther-client-server-repo/index.html"}
+
+function LoadEstherUsingRaspberry ()
+{window.location="http://192.168.43.140:80/esther-client-server-repo/index.html"}
