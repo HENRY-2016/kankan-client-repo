@@ -1,8 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" id = "com.kankan.client" version = "1.0.0">
+<!-- <widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" id = "com.kankan.client" version = "1.0.0">
     <name>Kankan </name>
-    <description>Client App </description>
+    <description>Client App </description> -->
+
+<widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" id = "com.esther.client" version = "1.0.0">
+
+    <name>palm </name>
+    <description>Palm Court Restaurant Client App </description>
 
     <author email="jacob2016henry@gmail.com" href="http://www.sample.web">Jacob Henry</author>
     <content src="index.html" />
