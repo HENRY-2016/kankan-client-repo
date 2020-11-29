@@ -13,7 +13,11 @@
 <script>
 function Check_Network_Status ()
 {
-	LoadEstherUsingGitHub ()
+	if (!navigator.onLine) {Create_Offline_Label ();}
+	else if (navigator.onLine) 
+		{
+			LoadEstherUsingGitHub ();
+		}
 }
 </script>
 </head>
@@ -36,7 +40,10 @@ function Check_Network_Status ()
 	<button class="next-to-payment-btn" onclick="LoadEstherUsingRaspberry ()">Raspberry</button><br><br>
 	<button class="next-to-payment-btn" onclick="LoadEstherUsingGitHub ()">Repo</button><br><br> -->
 
-
+	<center>
+		<br><br>
+		<div id="offline-label-div"></div>
+	</center>
 
 </body>
 </html>
