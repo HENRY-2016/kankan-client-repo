@@ -11,6 +11,10 @@
 <script src="static/js/main.js"></script>
 <link rel="stylesheet" type="text/css" href="static/css/main.css">
 <script>
+ function ConnectToGitHub ()
+ {
+	LoadEstherUsingGitHub ();
+ }
 function Check_Network_Status ()
 {
 	if (!navigator.onLine) {Create_Offline_Label ();}
@@ -22,7 +26,7 @@ function Check_Network_Status ()
 </script>
 </head>
 
-<body class="main_body" onload="Check_Network_Status ()">
+<body class="main_body" onload="Check_Network_Status ()" ononline="ConnectToGitHub ()" >
 <div id="main-header">
 	<div  id= "Navigetion" class=" w3-light-grey header">
 		<div id="NaviDivHeader">
