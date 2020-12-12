@@ -13,8 +13,21 @@ function LoadUsingRaspberry ()
 
 // Esther
 function LoadEstherUsingGitHub ()
-{window.location='https://henry-2016.github.io/esther-client-server-repo/'}
+{
 
+if(!navigator.onLine)
+{
+ window.location ="error.html"
+}
+else if(navigator.onLine)
+{
+window.location='https://henry-2016.github.io/esther-client-server-repo/'
+}
+
+
+
+
+}
 function LoadEstherUsingLapTop ()
 {window.location="http://192.168.43.23:80/esther-client-server-repo/index.html"}
 
